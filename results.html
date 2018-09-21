@@ -1,0 +1,97 @@
+<!-- NOTE, THIS PAGE IS PRIMARILY A PLACE TO TEST CODE -->
+<!-- NOTE, THIS PAGE IS PRIMARILY A PLACE TO TEST CODE -->
+<!-- NOTE, THIS PAGE IS PRIMARILY A PLACE TO TEST CODE -->
+<!-- NOTE, THIS PAGE IS PRIMARILY A PLACE TO TEST CODE -->
+<!-- NOTE, THIS PAGE IS PRIMARILY A PLACE TO TEST CODE -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tables Page</title>
+
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<!-- BODY -->
+
+</BODY>
+
+<body>
+
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!-- Results Display Here -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Current Reservations</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="eventList" class="list-group"></ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- SCRIPT -->
+
+<script type="text/javascript">
+
+    function runTableQuery() {
+        // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+        $.ajax({ url: "/api/fire", method: "GET" })
+            .then(function (fireData) {
+
+                // Here we then log the fireData to console, where it will show up as an object.
+                console.log(fireData);
+                console.log("------------------------------------");
+
+                // Loop through and display each of the events
+                for (var i = 0; i < fireData.length; i++) {
+
+                    // Get a reference to the eventList element and populate it with tables
+                    var eventList = $("#eventList");
+
+                    // Then display the fields in the HTML (Section Name, Date, URL)
+                    var listItem = $("<li class='list-group-item mt-4'>");
+
+                    listItem.append(
+                        $("<h2>").text("Table #" + (i + 1)),
+                        $("<hr>"),
+                        $("<h2>").text("Title: " + fireData[i].title),
+                        $("<h2>").text("Address: " + fireData[i].address),
+                        $("<h2>").text("Description: " + fireData[i].description),
+                        $("<h2>").text("Date/Time: " + fireData[i].date),
+                        $("<h2>").text("Date/Time: " + fireData[i].time),
+                        $("<h2>").text("Date/Time: " + fireData[i].contact)
+
+                    );
+
+                    eventList.append(listItem);
+                }
+            });
+    }
+
+
+    // Run Queries!
+    // ==========================================
+    runTableQuery();
+
+
+</script>
+
+</html>
