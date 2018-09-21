@@ -45,6 +45,7 @@ $(document).ready(function() {
         $("#searchResultsDiv").append(searchCard);
         // end create master card
 
+
         // start zipCodeDiv
         var zipCodeDiv = $("<div>", {
             class: "form",
@@ -53,43 +54,45 @@ $(document).ready(function() {
         $("#searchCard").append(zipCodeDiv);
 
         var zipCode = $("<div>", {
-            class: "input-field",
+            class: "input-field inline",
             id:"zipCode",
-            text: "Enter your zip code",
+            text: "Enter your zip code:",
             type: "text"
         });
         $("#zipCodeDiv").append(zipCode);
-        // // end zipCodeDiv area
+        // end zipCodeDiv area
 
-        // start gamingDiv
-        var gamingDiv = $("<div>", {
-            id: "gamingDiv",
-            class: "div"
-        });
-        $("#gamingBtnDiv").append(gamingDiv);
 
-        var gamingBtn = $("<button>", {
-            class: "btn-large",
-            id: "gamingBtn",
-            text: "Gaming"
-        });
-        $("#searchCard").append(gamingBtn);
-        // end gamingBtn area
+        // // start gamingDiv
+        // var gamingDiv = $("<div>", {
+        //     id: "gamingDiv",
+        //     class: "div"
+        // });
+        // $("#gamingBtnDiv").append(gamingDiv);
 
-        // start sportsDiv
-        var sportsDiv = $("<div>",{
-            class: "div",
-            id: "sportsDiv"
-        });
-        $("#sportsBtnDiv").append(sportsDiv);
+        // var gamingBtn = $("<button>", {
+        //     class: "btn-large",
+        //     id: "gamingBtn",
+        //     text: "Gaming"
+        // });
+        // $("#searchCard").append(gamingBtn);
+        // // end gamingDiv area
 
-        var sportsBtn = $("<button>", {
-            class: "btn-large",
-            id: "sportsBtn",
-            text: "Sports"
-        });
-        $("searchCard").append(sportsBtn);
 
+        // // start sportsDiv
+        // var sportsDiv = $("<div>",{
+        //     id: "sportsDiv",
+        //     class: "div"
+        // });
+        // $("#sportsBtnDiv").append(sportsDiv);
+
+        // var sportsBtn = $("<button>", {
+        //     class: "btn-large",
+        //     id: "sportsBtn",
+        //     text: "Sports"
+        // });
+        // $("searchCard").append(sportsBtn);
+        // // end sportsDiv area
 
 
         });
