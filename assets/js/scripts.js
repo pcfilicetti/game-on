@@ -32,6 +32,7 @@ $(document).ready(function() {
     };
     createCreateGroup();
 
+    
     function createSearchDiv() {
         $("#findGroup").click(function() {
             $("#findDiv").empty();
@@ -44,6 +45,7 @@ $(document).ready(function() {
         $("#searchResultsDiv").append(searchCard);
         // end create master card
 
+        // start zipCodeDiv
         var zipCodeDiv = $("<div>", {
             class: "form",
             id: "zipCodeDiv"
@@ -54,23 +56,40 @@ $(document).ready(function() {
             class: "input-field",
             id:"zipCode",
             text: "Enter your zip code",
-            // type: "form"
+            type: "text"
         });
         $("#zipCodeDiv").append(zipCode);
-        // end zipCodeDiv area
+        // // end zipCodeDiv area
 
+        // start gamingDiv
         var gamingDiv = $("<div>", {
             id: "gamingDiv",
             class: "div"
         });
-        $("#searchCard").append(gamingDiv);
+        $("#gamingBtnDiv").append(gamingDiv);
 
         var gamingBtn = $("<button>", {
-            class: "btn-large right-align",
+            class: "btn-large",
             id: "gamingBtn",
             text: "Gaming"
         });
-        $("#gamingBtnDiv").append(gamingBtn);
+        $("#searchCard").append(gamingBtn);
+        // end gamingBtn area
+
+        // start sportsDiv
+        var sportsDiv = $("<div>",{
+            class: "div",
+            id: "sportsDiv"
+        });
+        $("#sportsBtnDiv").append(sportsDiv);
+
+        var sportsBtn = $("<button>", {
+            class: "btn-large",
+            id: "sportsBtn",
+            text: "Sports"
+        });
+        $("searchCard").append(sportsBtn);
+
 
 
         });
