@@ -37,29 +37,47 @@ $(document).ready(function() {
         $("#findGroup").click(function() {
             $("#findDiv").empty();
             $("#createDiv").empty();
+
+            var searchForm = $("<div>", {
+                class: "input-field inline",
+                id: "searchForm",
+                type: "text",
+                text: "Enter your zip code:"
+            });
+            $("#searchResultsDiv").append(searchForm);
+
+            // show -hide
+
+
+
+
+
+
+
+
             
-        var searchCard = $("<div>", {
-            class: "card",
-            id: "searchCard"
-        });
-        $("#searchResultsDiv").append(searchCard);
-        // end create master card
+        // var searchCard = $("<div>", {
+        //     class: "card",
+        //     id: "searchCard"
+        // });
+        // $("#searchResultsDiv").append(searchCard);
+        // // end create master card
 
 
-        // start zipCodeDiv
-        var zipCodeDiv = $("<div>", {
-            class: "form",
-            id: "zipCodeDiv"
-        });
-        $("#searchCard").append(zipCodeDiv);
+        // // start zipCodeDiv
+        // var zipCodeDiv = $("<div>", {
+        //     class: "form",
+        //     id: "zipCodeDiv"
+        // });
+        // $("#searchCard").append(zipCodeDiv);
 
-        var zipCode = $("<div>", {
-            class: "input-field inline",
-            id:"zipCode",
-            text: "Enter your zip code:",
-            type: "text"
-        });
-        $("#zipCodeDiv").append(zipCode);
+        // var zipCode = $("<div>", {
+        //     class: "input-field inline",
+        //     id:"zipCode",
+        //     text: "Enter your zip code:",
+        //     type: "text"
+        // });
+        // $("#zipCodeDiv").append(zipCode);
         // end zipCodeDiv area
 
 
