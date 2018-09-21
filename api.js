@@ -1,11 +1,11 @@
-
-
 var NodeGeocoder = require('node-geocoder');
 var fetch = require('node-fetch');
 var distance = require('google-distance-matrix');
 
 
 var keys = require("./keys.js");
+var city;
+var state;
 
 
 var geoOptions = {
@@ -31,13 +31,19 @@ geocoder.geocode(location, function (err, geoResult) {
     var lngResult = geoResult[0].longitude;
     console.log(lngResult);
 
-        // Calling matrix API
-        // googleMatrix(latResult,lngResult);
+    city = geoResult[0].city;
+    state = geoResult[0].administrativeLevels.level1long;
+
+    console.log(geoResult[0].city, geoResult[0].administrativeLevels.level1long);
+
+
+    // Calling matrix API
+    googleMatrix(city, state);
 
     // Calling DarkSky API with the lattitude and longtitude.
-        darkSky(latResult, lngResult);
+    darkSky(latResult, lngResult);
 
-    
+
 
 });
 
@@ -91,37 +97,37 @@ function darkSky(lat, lng) {
 }
 
 // Google Matrix (Phase 2)===========================================================================
-// function googleMatrix (){
-//     // console.log("Lat from geocode:" +latResult);
-// var origins = [];
-// // var origins = ["Arlington, VA"];
-// var destinations = ['New York NY', "Sanfrancisco, CA"];
- 
-// distance.key(keys.geocodeKey.secret);
-// distance.units('imperial');
- 
-// distance.matrix(origins, destinations, function (err, distances) {
-//     if (err) {
-//         return console.log(err);
-//     }
-//     if(!distances) {
-//         return console.log('no distances');
-//     }
-//     if (distances.status == 'OK') {
-//         console.log(distances);
+// console.log("Lat from geocode:" +latResult);
+function googleMatrix() {
+    var origins = [city, state];
+    // var origins = ["Arlington, VA"];
+    var destinations = ['New York NY', "Sanfrancisco, CA"];
 
-//         for (var i=0; i < origins.length; i++) {
-//             for (var j = 0; j < destinations.length; j++) {
-//                 var origin = distances.origin_addresses[i];
-//                 var destination = distances.destination_addresses[j];
-//                 if (distances.rows[0].elements[j].status == 'OK') {
-//                     var distance = distances.rows[i].elements[j].distance.text;
-//                     console.log('Distance from ' + origin + ' to ' + destination + ' is ' + distance);
-//                 } else {
-//                     console.log(destination + ' is not reachable by land from ' + origin);
-//                 }
-//             }
-//         }
-//     }
-// });
+    distance.key(keys.geocodeKey.secret);
+    distance.units('imperial');
+
+    distance.matrix(origins, destinations, function (err, distances) {
+        if (err) {
+            return console.log(err);
+        }
+        if (!distances) {
+            return console.log('no distances');
+        }
+        if (distances.status == 'OK') {
+            console.log(distances);
+
+            for (var i = 0; i < origins.length; i++) {
+                for (var j = 0; j < destinations.length; j++) {
+                    var origin = distances.origin_addresses[i];
+                    var destination = distances.destination_addresses[j];
+                    if (distances.rows[0].elements[j].status == 'OK') {
+                        var distance = distances.rows[i].elements[j].distance.text;
+                        console.log('Distance from ' + origin + ' to ' + destination + ' is ' + distance);
+                    } else {
+                        console.log(destination + ' is not reachable by land from ' + origin);
+                    }
+                }
+            }
+        }
+    });
 }
