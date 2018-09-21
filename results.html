@@ -28,6 +28,7 @@
 
     <div class="container">
 
+        <!-- THIS SECTION iS FOR TESTING INCOMING FIREBASE INFO -->
 
         <div class="row">
             <div class="col-lg-12">
@@ -35,10 +36,29 @@
                 <!-- Results Display Here -->
                 <div class="card">
                     <div class="card-header">
-                        <h4>Current Reservations</h4>
+                        <h4>GAME READY</h4>
                     </div>
                     <div class="card-body">
                         <ul id="eventList" class="list-group"></ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- THIS SECTION IS FOR TESTING CREATION OF NEW DIV -->
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!-- Results Display Here -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>GAME READY</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="testList" class="list-group"></ul>
                     </div>
                 </div>
 
@@ -50,6 +70,10 @@
 <!-- SCRIPT -->
 
 <script type="text/javascript">
+
+
+    // THIS SECTION IS FOR TESTING DISPLAY OF INCOMING FIREBASE DATA
+    // =============================================
 
     function runTableQuery() {
         // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
@@ -70,9 +94,10 @@
                     var listItem = $("<li class='list-group-item mt-4'>");
 
                     listItem.append(
-                        $("<h2>").text("Table #" + (i + 1)),
+                        // $("<h2>").text("Table #" + (i + 1)),
+                        $("<h2>").text(fireData[i].title),
                         $("<hr>"),
-                        $("<h2>").text("Title: " + fireData[i].title),
+                        // $("<h2>").text("Title: " + fireData[i].title),
                         $("<h2>").text("Address: " + fireData[i].address),
                         $("<h2>").text("Description: " + fireData[i].description),
                         $("<h2>").text("Date/Time: " + fireData[i].date),
@@ -85,11 +110,71 @@
                 }
             });
     }
-
-
     // Run Queries!
     // ==========================================
     runTableQuery();
+    // ==========================================
+
+
+
+
+
+
+
+
+    // THIS SECTION TESTS CREATION OF NEW DIV
+
+    // TEST OBJECT
+    // ===============================
+
+    var testData = [
+        {
+            title: "Hoops in Arlington",
+            address: "1234 Clarendon Dr",
+            description: "We like to play regularly at this spot, feel free to join us!",
+            date: "9/21",
+            time: "5 pm",
+            contact: "Tweet me @dunkmasterJ",
+        },
+        {
+            title: "Hoops in Arlington",
+            address: "1234 Clarendon Dr",
+            description: "We like to play regularly at this spot, feel free to join us!",
+            date: "9/21",
+            time: "5 pm",
+            contact: "Tweet me @dunkmasterJ",
+        }
+    ]
+
+
+    for (var i = 0; i < testData.length; i++) {
+
+        // Get a reference to the eventList element and populate it with tables
+        var testList = $("#testList");
+
+        // Then display the fields in the HTML (Section Name, Date, URL)
+        var testItem = $("<li class='list-group-item mt-4'>");
+
+        testItem.append(
+            // $("<h2>").text("Table #" + (i + 1)),
+            $("<h2>").text(testData[i].title),
+            $("<hr>"),
+            // $("<h2>").text("Title: " + testData[i].title),
+            $("<h2>").text("Address: " + testData[i].address),
+            $("<h2>").text("Description: " + testData[i].description),
+            $("<h2>").text("Date/Time: " + testData[i].date),
+            $("<h2>").text("Date/Time: " + testData[i].time),
+            $("<h2>").text("Date/Time: " + testData[i].contact)
+
+        );
+
+        testList.append(testItem);
+    }
+
+
+
+
+
 
 
 </script>
