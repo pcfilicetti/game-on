@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    $("#resultsDiv").hide();
+
     function createLogo() {
         var logo = $("<img>", {
             src: "./assets/images/logo.png",
@@ -38,81 +40,22 @@ $(document).ready(function() {
             $("#findDiv").empty();
             $("#createDiv").empty();
 
-            var searchForm = $("<div>", {
-                class: "input-field inline",
-                id: "searchForm",
-                type: "text",
-                text: "Enter your zip code:"
+            // show - hide
+            $("#resultsDiv").show();
+
+            var gamingBtn = $("<button>", {
+                class: "btn-large",
+                id: "gamingBtn",
+                text: "Gaming"
             });
-            $("#searchResultsDiv").append(searchForm);
+            $("#gamingBtnDiv").append(gamingBtn);
 
-            // show -hide
-
-
-
-
-
-
-
-
-            
-        // var searchCard = $("<div>", {
-        //     class: "card",
-        //     id: "searchCard"
-        // });
-        // $("#searchResultsDiv").append(searchCard);
-        // // end create master card
-
-
-        // // start zipCodeDiv
-        // var zipCodeDiv = $("<div>", {
-        //     class: "form",
-        //     id: "zipCodeDiv"
-        // });
-        // $("#searchCard").append(zipCodeDiv);
-
-        // var zipCode = $("<div>", {
-        //     class: "input-field inline",
-        //     id:"zipCode",
-        //     text: "Enter your zip code:",
-        //     type: "text"
-        // });
-        // $("#zipCodeDiv").append(zipCode);
-        // end zipCodeDiv area
-
-
-        // // start gamingDiv
-        // var gamingDiv = $("<div>", {
-        //     id: "gamingDiv",
-        //     class: "div"
-        // });
-        // $("#gamingBtnDiv").append(gamingDiv);
-
-        // var gamingBtn = $("<button>", {
-        //     class: "btn-large",
-        //     id: "gamingBtn",
-        //     text: "Gaming"
-        // });
-        // $("#searchCard").append(gamingBtn);
-        // // end gamingDiv area
-
-
-        // // start sportsDiv
-        // var sportsDiv = $("<div>",{
-        //     id: "sportsDiv",
-        //     class: "div"
-        // });
-        // $("#sportsBtnDiv").append(sportsDiv);
-
-        // var sportsBtn = $("<button>", {
-        //     class: "btn-large",
-        //     id: "sportsBtn",
-        //     text: "Sports"
-        // });
-        // $("searchCard").append(sportsBtn);
-        // // end sportsDiv area
-
-
+            var sportsBtn = $("<button>", {
+                class: "btn-large",
+                id: "sportsBtn",
+                test: "Sports"
+            });
+            $("#sportsBtnDiv").append(sportsBtn);
         });
     };
     createSearchDiv();

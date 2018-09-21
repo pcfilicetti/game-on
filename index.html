@@ -20,72 +20,94 @@
         <div class="row" id="logoDiv"></div>
     </header>
 
-    <main> <!--start main-->
+    <!--start main-->
+    <main> 
     
     <div class="row" id="buttonRow">
 
-        <!-- left space -->
+        <!-- left space buttonRow-->
         <div class="col m3"></div>
 
-        <div class="col m3" id="findDiv">
-            <!-- findDiv -->
-        </div>
+        <!-- findDiv -->
+        <div class="col m3" id="findDiv"></div>
         
-        <div class="col m3" id="createDiv">
-            <!-- createDiv -->
-        </div>
+        <!-- createDiv -->
+        <div class="col m3" id="createDiv"></div>
 
-        <!-- right space -->
+        <!-- right space buttonRow -->
         <div class="col m3"></div>
 
-    </div> <!--end buttonRow-->
+    </div> 
+    <!--end buttonRow-->
 
-    <div class="row" id="resultsRow">
+    <!-- start dynamic area -->
+    <div class="row" id="dynamicRow">
 
-        <!--left space-->
+        <!--left space dynamicRow-->
         <div class="col m3"></div>
 
-        <!--searchResults-->
         <div class="col m6">
+            <!-- start dynamicDiv -->
             <div id="dynamicDiv">
-                <form class="col m12" id="searchForm"></form>
-                <!-- zip code input -->
-            </div>
-
-
-
-            <!-- <div class="row" id="zipCodeRow">
-                <div class="col m6">
-                    <div id="zipCodeDiv"></div>
-                </div>
-            </div>
-            
-            <div class="row"> -->
-
-                <!--left space-->
-                <!-- <div class="col m3"></div>
                 
-                <div class="col m3">
-                    <div id="gamingBtnDiv"></div>
+                <div class="row" id="zipCodeRow">
+                    <div class="container" id="resultsDiv">
+                        <div class="col s12">
+
+                            Enter your zip code:
+                            <div class="input-field inline">
+
+                            <input id="zipCode" type="text" class="validate">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col m3">
-                    <div id="sportsBtnDiv"></div>
-                </div> -->
+                <div class="row" id="gameSportsRow">
 
-                <!-- right space -->
-                <!-- <div class="col m3"></div> -->
+                    <div class="container" id="sportsBtnDiv">
 
-        </div>
+                    <div class="col m6">
+                        <div id="gamingBtnDiv"></div>
+                    </div>
+
+                    <div class="col m6">
+                        <div id="sportsBtnDiv"></div>
+                    </div>
+                    
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div> <!--end dynamicDiv-->
+
+
+
+
+
+
 
     </div>
 
-        <!--right space-->
+    <!-- </div> -->
+
+        <!--right space dynamicRow-->
         <div class="col m3"></div>
-
-
-        <!--createResults-->
-        <!-- <div class="col m6" id="createResultsDiv"></div> -->
 
     </div>
 
