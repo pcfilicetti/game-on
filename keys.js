@@ -1,10 +1,15 @@
 require("dotenv").config(); 
 
 var geocodeKey= {
-  key: process.env.GOOGLE_ID
+  secret: process.env.GOOGLE_ID
+}
+
+var darkSkyKey= {
+  secret: process.env.DARKSKY_ID
 }
 
 
 module.exports = {
-  geocodeKey:geocodeKey
+  geocodeKey:geocodeKey,
+  darkSkyKey:darkSkyKey
 }
