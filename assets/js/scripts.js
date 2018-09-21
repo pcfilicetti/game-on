@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
-    function logoJourney() {
-        // logo image
+    function createLogo() {
         var logo = $("<img>", {
             src: "./assets/images/logo.png",
             id: "logo",
@@ -9,25 +8,28 @@ $(document).ready(function() {
             class: "logoImage slide-in-blurred-bottom"
         });
         $("#logoDiv").append(logo);
-
-        // var screenHeight = 
-
-        // start logo off screen
-        // $("#logo").animate({
-            // top: "200px",
-            // left: "100px",
-        
-
-        // })
-        // logo flies in to middle
-
-        // logo pauses
-        // logo flies up to top and stays there
     };
+    createLogo();
     
-    logoJourney();
+    function createFindGroup() {
+        var findGroup = $("<button>", {
+            class: "btn-large",
+            id: "findGroup",
+            text: "Find a game near you!"
+        });
+        $("#findDiv").append(findGroup);
+    };
+    createFindGroup();
 
 
-
+    function createCreateGroup() {
+        var createGroup = $("<button>", {
+            class: "btn-large",
+            text: "Create an event!",
+            id: "createGroup"
+        });
+        $("#createDiv").append(createGroup);
+    };
+    createCreateGroup();
 
 }); //end document.ready

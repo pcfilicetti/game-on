@@ -14,6 +14,29 @@ body {
     bottom: 0;
 }
 
+#findGroup {
+    display: block;
+    align-content: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+#createGroup {
+    display: block;
+    align-content: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+.btn-large {
+    background-color: #872020;
+}
+
+
+
+
+
+
 .slide-in-blurred-bottom {
 	-webkit-animation: slide-in-blurred-bottom 1s ease-in-out both;
     animation: slide-in-blurred-bottom 1s ease-in-out both;
@@ -31,8 +54,8 @@ body {
  */
  @-webkit-keyframes slide-in-blurred-bottom {
     0% {
-      -webkit-transform: translateY(500px) scaleY(2.5) scaleX(0.2);
-              transform: translateY(500px) scaleY(2.5) scaleX(0.2);
+      -webkit-transform: translateY(600px) scaleY(2.5) scaleX(0.2);
+              transform: translateY(600px) scaleY(2.5) scaleX(0.2);
       -webkit-transform-origin: 50% 100%;
               transform-origin: 50% 100%;
       -webkit-filter: blur(40px);
