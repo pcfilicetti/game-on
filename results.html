@@ -11,132 +11,48 @@
     <meta charset="UTF-8">
     <title>Tables Page</title>
 
-    <!-- Latest compiled and minified CSS & JS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- MATERIALIZE CSS   -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- ANIMATE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 </head>
 
 
 <!-- BODY -->
 
-</BODY>
-
 <body>
 
     <div class="container">
 
-        <!-- THIS SECTION iS FOR TESTING INCOMING FIREBASE INFO -->
-
         <div class="row">
-            <div class="col-lg-12">
 
-                <!-- Results Display Here -->
-                <div class="card">
-                    <div class="card-header">
-                        <h4>GAME READY</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul id="eventList" class="list-group"></ul>
-                    </div>
-                </div>
+            <h4> GAME READY</h4>
+
+            <div id="results" class="row">
+                <!-- <ul id="testList" class="list-group"></ul> -->
 
             </div>
+
         </div>
 
-
-        <!-- THIS SECTION IS FOR TESTING CREATION OF NEW DIV -->
-
-        <div class="row">
-            <div class="col-lg-12">
-
-                <!-- Results Display Here -->
-                <div class="card">
-                    <div class="card-header">
-                        <h4>GAME READY</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul id="testList" class="list-group"></ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
+
 </body>
 
-<!-- SCRIPT -->
 
+
+<!-- SCRIPT -->
 <script type="text/javascript">
 
-
-    // THIS SECTION IS FOR TESTING DISPLAY OF INCOMING FIREBASE DATA
-    // =============================================
-
-    function runTableQuery() {
-        // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-        $.ajax({ url: "/api/fire", method: "GET" })
-            .then(function (fireData) {
-
-                // Here we then log the fireData to console, where it will show up as an object.
-                console.log(fireData);
-                console.log("------------------------------------");
-
-                // Loop through and display each of the events
-                for (var i = 0; i < fireData.length; i++) {
-
-                    // Get a reference to the eventList element and populate it with tables
-                    var eventList = $("#eventList");
-
-                    // Then display the fields in the HTML (Section Name, Date, URL)
-                    var listItem = $("<li class='list-group-item mt-4'>");
-
-                    listItem.append(
-                        // $("<h2>").text("Table #" + (i + 1)),
-                        $("<h2>").text(fireData[i].title),
-                        $("<hr>"),
-                        // $("<h2>").text("Title: " + fireData[i].title),
-                        $("<h2>").text("Address: " + fireData[i].address),
-                        $("<h2>").text("Description: " + fireData[i].description),
-                        $("<h2>").text("Date/Time: " + fireData[i].date),
-                        $("<h2>").text("Date/Time: " + fireData[i].time),
-                        $("<h2>").text("Date/Time: " + fireData[i].contact)
-
-                    );
-
-                    eventList.append(listItem);
-                }
-            });
-    }
-    // Run Queries!
-    // ==========================================
-    runTableQuery();
-    // ==========================================
-
-
-
-
-
-
-
-
-    // THIS SECTION TESTS CREATION OF NEW DIV
-
-    // TEST OBJECT
+    // TEST OBJECTS
     // ===============================
 
     var testData = [
         {
-            title: "Hoops in Arlington",
-            address: "1234 Clarendon Dr",
-            description: "We like to play regularly at this spot, feel free to join us!",
-            date: "9/21",
-            time: "5 pm",
-            contact: "Tweet me @dunkmasterJ",
-        },
-        {
+            image: "https://1basil1.files.wordpress.com/2013/05/doin-it-in-the-park-old-school-slam-jam.jpg",
             title: "Hoops in Arlington",
             address: "1234 Clarendon Dr",
             description: "We like to play regularly at this spot, feel free to join us!",
@@ -144,38 +60,107 @@
             time: "5 pm",
             contact: "Tweet me @dunkmasterJ",
         }
+        ,
+        {
+            image: "https://images.penguinrandomhouse.com/cover/9781506703480",
+            title: "DotA in Merrifield",
+            address: "5678 Dunn Loring",
+            description: "Always down to play som Dotes!!",
+            date: "most evenings",
+            time: "7 pm",
+            contact: "my steam id is GanksForDays",
+        },
+        {
+            image: "https://geekandsundry.com/wp-content/uploads/2016/06/Dungeon-Master.jpg",
+            title: "DungeonMaster looking for group",
+            address: "Ballston",
+            description: "I specialize in D&D 5e",
+            date: "friday nights",
+            time: "",
+            contact: "send an email to africanswallow@velocity.com",
+        },
+        {
+            image: "https://www.gannett-cdn.com/-mm-/c459130398d688c45d5a0b807fa91963a5bc217d/c=61-0-2982-2196/local/-/media/2018/03/27/TreasureCoast/TreasureCoast/636577844298006629-032718FLAGcentennialVSouthFork02.JPG?width=680&height=510&fit=crop",
+            title: "Flag Football Running Back",
+            address: "Chantilly",
+            description: "I LOVE flag football!  If you want an all-star female running back on your team, call me up!",
+            date: "Any. Time.",
+            time: "I mean any",
+            contact: "text 703-586-3836",
+        },
+        {
+            image: "https://1basil1.files.wordpress.com/2013/05/doin-it-in-the-park-old-school-slam-jam.jpg",
+            title: "Hoops in Arlington",
+            address: "1234 Clarendon Dr",
+            description: "We like to play regularly at this spot, feel free to join us!",
+            date: "9/21",
+            time: "5 pm",
+            contact: "Tweet me @dunkmasterJ",
+        }
+        ,
+        {
+            image: "https://images.penguinrandomhouse.com/cover/9781506703480",
+            title: "DotA in Merrifield",
+            address: "5678 Dunn Loring",
+            description: "Always down to play som Dotes!!",
+            date: "most evenings",
+            time: "7 pm",
+            contact: "my steam id is GanksForDays",
+        },
+        {
+            image: "https://geekandsundry.com/wp-content/uploads/2016/06/Dungeon-Master.jpg",
+            title: "DungeonMaster looking for group",
+            address: "Ballston",
+            description: "I specialize in D&D 5e",
+            date: "friday nights",
+            time: "",
+            contact: "send an email to africanswallow@velocity.com",
+        },
+        {
+            image: "https://www.gannett-cdn.com/-mm-/c459130398d688c45d5a0b807fa91963a5bc217d/c=61-0-2982-2196/local/-/media/2018/03/27/TreasureCoast/TreasureCoast/636577844298006629-032718FLAGcentennialVSouthFork02.JPG?width=680&height=510&fit=crop",
+            title: "Flag Football Running Back",
+            address: "Chantilly",
+            description: "I LOVE flag football!  If you want an all-star female running back on your team, call me up!",
+            date: "Any. Time.",
+            time: "I mean any",
+            contact: "text 703-586-3836",
+        }
     ]
+
+    // ==================================================
+
+
+    var cards = $("#results");
 
 
     for (var i = 0; i < testData.length; i++) {
-
-        // Get a reference to the eventList element and populate it with tables
-        var testList = $("#testList");
-
-        // Then display the fields in the HTML (Section Name, Date, URL)
-        var testItem = $("<li class='list-group-item mt-4'>");
-
-        testItem.append(
-            // $("<h2>").text("Table #" + (i + 1)),
-            $("<h2>").text(testData[i].title),
-            $("<hr>"),
-            // $("<h2>").text("Title: " + testData[i].title),
-            $("<h2>").text("Address: " + testData[i].address),
-            $("<h2>").text("Description: " + testData[i].description),
-            $("<h2>").text("Date/Time: " + testData[i].date),
-            $("<h2>").text("Date/Time: " + testData[i].time),
-            $("<h2>").text("Date/Time: " + testData[i].contact)
-
-        );
-
-        testList.append(testItem);
+        cards.append(createCard(testData[i]));
     }
 
+    function createCard(card) {
+   
+        var cardContent = `
+        <div class="col m4">
+            <div class="card">
+                <div class="card-image">
+                    <img src="${card.image}">
+                    <span class="card-title">${card.title}</span>
+                </div>
+                <div class="card-content">
+                  <p>${card.address}</p>
+                  <p>${card.description}</p>
+                  <p>${card.date}</p>
+                  <p>${card.time}</p>
+                  <p>${card.contact}</p>
+                </div>
+            </div>
+        </div>
+        `
+        console.log(cardContent);
 
-
-
-
-
+        // return newCard.append(cardContent);
+        return cardContent;
+    }
 
 </script>
 
