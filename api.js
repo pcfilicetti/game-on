@@ -7,48 +7,6 @@ var keys = require("./keys.js");
 var city;
 var state;
 
-
-var geoOptions = {
-    provider: 'google',
-
-    // Optional depending on the providers
-    httpAdapter: 'https', // Default
-    apiKey: keys.geocodeKey.secret,
-    formatter: null
-};
-
-var geocoder = NodeGeocoder(geoOptions);
-var location = "new york, ny" //User Input
-// Using callback
-geocoder.geocode(location, function (err, geoResult) {
-
-    // console.log(geoResult )
-    // console.log(geoResult[0]); //One Array with only one index at index[0]
-
-    var latResult = geoResult[0].latitude;
-    console.log(latResult);
-
-    var lngResult = geoResult[0].longitude;
-    console.log(lngResult);
-
-    city = geoResult[0].city;
-    state = geoResult[0].administrativeLevels.level1long;
-
-    console.log(geoResult[0].city, geoResult[0].administrativeLevels.level1long);
-
-
-    // Calling matrix API
-    googleMatrix(city, state);
-
-    // Calling DarkSky API with the lattitude and longtitude.
-    darkSky(latResult, lngResult);
-
-
-
-});
-
-
-
 /* DarkSky API request from https://gist.github.com/prof3ssorSt3v3/0cdc5b0f118e06b8c1c0e255c3db704a (youtube tutorial)*/
 function darkSky(lat, lng) {
 
@@ -96,12 +54,57 @@ function darkSky(lat, lng) {
         });
 }
 
+// Geocode Function======================
+function geoCode(){
+
+var geoOptions = {
+    provider: 'google',
+
+    // Optional depending on the providers
+    httpAdapter: 'https', // Default
+    apiKey: keys.geocodeKey.secret,
+    formatter: null
+};
+
+var geocoder = NodeGeocoder(geoOptions);
+var location = "new york, ny" //User Input
+// Using callback
+geocoder.geocode(location, function (err, geoResult) {
+
+    // console.log(geoResult )
+    // console.log(geoResult[0]); //One Array with only one index at index[0]
+
+    var latResult = geoResult[0].latitude;
+    console.log(latResult);
+
+    var lngResult = geoResult[0].longitude;
+    console.log(lngResult);
+
+    city = geoResult[0].city;
+    state = geoResult[0].administrativeLevels.level1long;
+
+    console.log(geoResult[0].city, geoResult[0].administrativeLevels.level1long);
+
+
+    // Calling matrix API
+    googleMatrix(city, state);
+
+    // Calling DarkSky API with the lattitude and longtitude.
+    darkSky(latResult, lngResult);
+
+
+
+});
+}
+
+
+
 // Google Matrix (Phase 2)===========================================================================
 // console.log("Lat from geocode:" +latResult);
 function googleMatrix() {
     var origins = [city, state];
     // var origins = ["Arlington, VA"];
-    var destinations = ['New York NY', "Sanfrancisco, CA"];
+    var destinations = ['New York NY', "Sanfrancisco, CA"]; // zip or address from Created Group
 
     distance.key(keys.geocodeKey.secret);
     distance.units('imperial');
@@ -131,3 +134,8 @@ function googleMatrix() {
         }
     });
 }
+
+// on click:
+// $("#zipCode").on("click", geoCode);
+geoCode()
+
