@@ -70,57 +70,67 @@
             </div>
         </div>
 
+        <!-- BELOW TWO DIVS ARE SAMPLE CARDS -->
+        <!-- <div class="row">
+            <div class="col s4 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://1basil1.files.wordpress.com/2013/05/doin-it-in-the-park-old-school-slam-jam.jpg">
+                        <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
+                            I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
 
-        <!-- EXAMPLE CARDS -->
+            <div class="col s4 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://1basil1.files.wordpress.com/2013/05/doin-it-in-the-park-old-school-slam-jam.jpg">
+                        <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
+                            I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div> -->
+
+
         <div class="row">
-            <div class="col s4 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://1basil1.files.wordpress.com/2013/05/doin-it-in-the-park-old-school-slam-jam.jpg">
-                        <span class="card-title">Card Title</span>
-                    </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
-                            I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
+
+            <h4> GAME READY</h4>
+
+            <div class="results">
+
             </div>
 
-            <div class="col s4 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://1basil1.files.wordpress.com/2013/05/doin-it-in-the-park-old-school-slam-jam.jpg">
-                        <span class="card-title">Card Title</span>
-                    </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
-                            I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col s4 m4">
+
+
+            <!-- Results Display Here
                 <div class="card">
-                    <div class="card-image">
-                        <img src="https://1basil1.files.wordpress.com/2013/05/doin-it-in-the-park-old-school-slam-jam.jpg">
-                        <span class="card-title">Card Title</span>
+                    <div class="card-header">
+                        <h4>GAME READY</h4>
                     </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
-                            I require little markup to use effectively.</p>
+                    <div class="card-body">
+                        <ul id="testList" class="list-group"></ul>
                     </div>
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
-            </div>
+                </div> -->
+
         </div>
+    </div>
 
 
 
@@ -190,7 +200,7 @@
 
     // THIS SECTION TESTS CREATION OF NEW DIV
 
-    // TEST OBJECT
+    // TEST OBJECTS
     // ===============================
 
     var testData = [
@@ -201,42 +211,88 @@
             date: "9/21",
             time: "5 pm",
             contact: "Tweet me @dunkmasterJ",
-        },
+        }
+        ,
         {
-            title: "DotA in Merrifield",
-            address: "5678 Dunn Loring",
-            description: "Always down to play som Dotes!!",
-            date: "most evenings",
-            time: "7 pm",
-            contact: "my steam id is GanksForDays",
+            title: "Hoops in Arlington",
+            address: "1234 Clarendon Dr",
+            description: "We like to play regularly at this spot, feel free to join us!",
+            date: "9/21",
+            time: "5 pm",
+            contact: "Tweet me @dunkmasterJ",
         }
     ]
 
+// THIS CODE PUTS TESTDATA INTO THE MIDDLE CARD
+// =============================================
+    // for (var i = 0; i < testData.length; i++) {
 
-    for (var i = 0; i < testData.length; i++) {
+    //     // Get a reference to the eventList element and populate it with tables
+    //     var testList = $("#testList");
 
-        // Get a reference to the eventList element and populate it with tables
-        var testList = $("#testList");
+    //     // Then display the fields in the HTML (Section Name, Date, URL)
+    //     var testItem = $("<li class='list-group-item mt-4'>");
 
-        // Then display the fields in the HTML (Section Name, Date, URL)
-        var testItem = $("<li class='list-group-item mt-4'>");
+    //     testItem.append(
+    //         // $("<h2>").text("Table #" + (i + 1)),
+    //         $("<h2>").text(testData[i].title),
+    //         $("<hr>"),
+    //         // $("<h2>").text("Title: " + testData[i].title),
+    //         $("<h2>").text("Address: " + testData[i].address),
+    //         $("<h2>").text("Description: " + testData[i].description),
+    //         $("<h2>").text("Date/Time: " + testData[i].date),
+    //         $("<h2>").text("Date/Time: " + testData[i].time),
+    //         $("<h2>").text("Date/Time: " + testData[i].contact)
 
-        testItem.append(
-            // $("<h2>").text("Table #" + (i + 1)),
-            $("<h2>").text(testData[i].title),
-            $("<hr>"),
-            // $("<h2>").text("Title: " + testData[i].title),
-            $("<h2>").text("Address: " + testData[i].address),
-            $("<h2>").text("Description: " + testData[i].description),
-            $("<h2>").text("Date/Time: " + testData[i].date),
-            $("<h2>").text("Date/Time: " + testData[i].time),
-            $("<h2>").text("Date/Time: " + testData[i].contact)
+    //     );
 
-        );
+    //     testList.append(testItem);
+    // }
 
-        testList.append(testItem);
-    }
+// ==================================================
 
+    // for (var i = 0; i < testData.length; i++) {
+
+    //     // Get a reference to the eventList element and populate it with tables
+    //     var newCard = $("<div class='col s4 m4'>");
+
+    //     // Then display the fields in the HTML (Section Name, Date, URL)
+
+    //     newCard.append(
+    //         $("<div class='card'>"),
+    //         $("<div class='card-image'>"),
+    //         $("<img>").attr("src", testData[i].image),
+    //         $("<span class='card-title'>").text(testData[i].title),
+    //         $("<h2>").text(testData[i].title),
+    //         $("<hr>"),
+    //         $("<h2>").text("Address: " + testData[i].address),
+    //         $("<h2>").text("Description: " + testData[i].description),
+    //         $("<h2>").text("Date/Time: " + testData[i].date),
+    //         $("<h2>").text("Date/Time: " + testData[i].time),
+    //         $("<h2>").text("Date/Time: " + testData[i].contact)
+
+    //     );
+
+
+
+    //     //append the card to results div
+    //     $("#results").append(newCard);
+    // }
+    // <div class="col s4 m4">
+    //     <div class="card">
+    //         <div class="card-image">
+    //             <img src="https://1basil1.files.wordpress.com/2013/05/doin-it-in-the-park-old-school-slam-jam.jpg">
+    //                 <span class="card-title">Card Title</span>
+    //                 </div>
+    //             <div class="card-content">
+    //                 <p>I am a very simple card. I am good at containing small bits of information. I am convenient because
+    //                         I require little markup to use effectively.</p>
+    //             </div>
+    //             <div class="card-action">
+    //                 <a href="#">This is a link</a>
+    //             </div>
+    //         </div>
+    //     </div>
 
 
 
