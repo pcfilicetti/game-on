@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,255 +9,176 @@
     <!-- MATERIALIZE CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- ANIMATE CSS -->
-    <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <!-- OUR CSS -->
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/styles.css" />
 </head>
 
 <body>
-    <header>    
+    <header>
         <!-- logoDiv -->
         <div class="row" id="logoDiv"></div>
     </header>
-
     <!--start main-->
-    <main> 
-    
-    <div class="row" id="buttonRow">
-        <!-- left space buttonRow-->
-        <div class="col m3"></div>
-        <!-- findDiv -->
-        <div class="col m3" id="findDiv"></div>       
-        <!-- createDiv -->
-        <div class="col m3" id="createDiv"></div>
-        <!-- right space buttonRow -->
-        <div class="col m3"></div>
-    </div> 
-    <!--end buttonRow-->
-
-    <!-- start dynamic area -->
-    <div class="row" id="dynamicRow">
-
-    <!--left space dynamicRow-->
-    <div class="col m3"></div>
-
-    <div class="col m6">
-    <!-- start dynamicDiv -->
-    <div id="dynamicDiv">
-
-        <div class="container" id="findEventDiv">
-
-            <div class="row" id="zipCodeRow">
-
-                <div class="col m4"></div>
-
-                <div class="col m4">
-
-                    <form>
-                        <div class="row center-align" id="rowCenterZip">
-                            <!-- <strong>Enter your zip code:</strong> -->
-                            <div class="input-field">
-                            <input id="zipCode" type="text" class="validate center-align">
-                            <!-- <label for="zipCode">Zip Code</label> -->
-                            <span class="helper-text" data-error="wrong" data-success="right">Zip Code</span>
+    <main>
+        <div class="row" id="buttonRow">
+            <!-- left space buttonRow-->
+            <div class="col m3"></div>
+            <!-- findDiv -->
+            <div class="col m3" id="findDiv"></div>
+            <!-- createDiv -->
+            <div class="col m3" id="createDiv"></div>
+            <!-- right space buttonRow -->
+            <div class="col m3"></div>
+        </div>
+        <!--end buttonRow-->
+        <!-- start dynamic area -->
+        <div class="row" id="dynamicRow">
+            <!--left space dynamicRow-->
+            <div class="col m3"></div>
+            <div class="col m6">
+                <!-- start dynamicDiv -->
+                <div id="dynamicDiv">
+                    <div class="container" id="findEventDiv">
+                        <div class="row" id="zipCodeRow">
+                            <div class="col m4"></div>
+                            <div class="col m4">
+                                <form>
+                                    <div class="row center-align" id="rowCenterZip">
+                                        <!-- <strong>Enter your zip code:</strong> -->
+                                        <div class="input-field">
+                                            <input id="zipCode" type="text" class="validate center-align">
+                                            <label for="zipCode">Zip Code</label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col m4"></div>
+                        </div>
+                        <div class="row" id="gameSportsRow">
+                            <div class="col m6">
+                                <div class="container">
+                                    <button class="btn fade-in center-align" id="gamingBtn">Gaming</button>
+                                </div>
+                            </div>
+                            <div class="col m6">
+                                <div class="container">
+                                    <button class="btn fade-in center-align" id="sportsBtn">Sports</button>
+                                </div>
                             </div>
                         </div>
-                    </form>
-
-                </div>
-
-                <div class="col m4"></div>
-
-            </div>
-
-
-            <div class="row" id="gameSportsRow">
-
-                <div class="col m6">
-                    <div class="container">
-                        <button class="btn fade-in center-align" id="gamingBtn">Gaming</button>
+                        <div class="row" id="submitFindDiv">
+                            <div class="col m12">
+                                <button class="btn fade-in center-align" id="submitBtnFind">Submit</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col m6">
-                    <div class="container">
-                      <button class="btn fade-in center-align" id="sportsBtn">Sports</button>
+                    <!-- ------------------------------- -->
+                    <div class="container fade-in" id="createEventDiv">
+                        <div class="row" id="eventFirstRow">
+                            <form class="col m12">
+                                <div class="row">
+                                    <!-- start title -->
+                                    <div class="input-field col m6">
+                                        <input id="title" type="text" maxlength="40">
+                                        <!-- <label for="title">Title</label> -->
+                                        <span class="helper-text" data-error="wrong" data-success="right">Title</span>
+                                    </div>
+                                    <!-- end title -->
+                                    <!-- start address -->
+                                    <div class="input-field col m6">
+                                        <input id="address" type="text">
+                                        <!-- <label for="address">Address</label> -->
+                                        <span class="helper-text" data-error="wrong" data-success="right">Address</span>
+                                    </div>
+                                    <!--end name and address-->
+                                    <!-- start email -->
+                                    <div class="input-field col m6">
+                                        <input id="email" type="email">
+                                        <!-- <label for="email">Email</label> -->
+                                        <span class="helper-text" data-error="wrong" data-success="right">Email</span>
+                                    </div>
+                                    <!-- end email -->
+                                    <div class="input-field col m6">
+                                        <input id="zip" type="number" maxlength="5">
+                                        <!-- <label for="email">Email</label> -->
+                                        <span class="helper-text" data-error="wrong" data-success="right">Zip Code</span>
+                                    </div>
+                                    <!-- start radio buttons -->
+                                    <div class="col m6">
+                                        <form action="#">
+                                            <p>
+                                                <label>
+                                                    <input name="group1" type="radio" id="gameRadio" checked />
+                                                    <span>Gaming</span>
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label>
+                                                    <input name="group1" type="radio" id="sportRadio" />
+                                                    <span>Sports</span>
+                                                </label>
+                                            </p>
+                                        </form>
+                                    </div>
+                                    <!-- DATE AND TIME -->
+                                    <div class="col m6">
+                                        <!-- <label for="datepicker">Date</label> -->
+                                        <input type="datetime-local" class="datepicker" id="datepicker">
+                                        <span class="helper-text" data-error="wrong" data-success="right">Date and Time</span>
+                                    </div>
+                                    <!-- end radio buttons -->
+                                    <!-- start description -->
+                                    <div class="input-field col m12">
+                                        <textarea id="description" class="materialize-textarea" maxlength="100"></textarea>
+                                        <!-- <label for="description">Description</label> -->
+                                        <span class="helper-text" data-error="wrong" data-success="right">Description</span>
+                                    </div>
+                                </div>
+                                <!-- end description -->
+                                <div class="row">
+                                    <button class="btn-large fade-in" id="submitCreateDiv">Submit</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
+                    <!-- end createEventDiv-->
                 </div>
-
+                <!--end dynamicDiv-->
             </div>
-
-            <div class="row" id="submitFindDiv">
-
-                <div class="col m12">
-
-                    <button class="btn fade-in center-align" id="submitBtnFind">Submit</button>
-
-                </div>
-
-            </div>
-
-
+            <!-- </div> -->
+            <!--right space dynamicRow-->
+            <div class="col m3"></div>
         </div>
-
-<!-- ------------------------------- -->
-
-    <div class="container fade-in" id="createEventDiv">
-
-        <div class="row" id="eventFirstRow">
-            <form class="col m12">
-                <div class="row">
-                    <!-- start name and address -->
-                    <div class="input-field col m6">
-                        <input id="name" type="text">
-                        <!-- <label for="name">Name</label> -->
-                        <span class="helper-text" data-error="wrong" data-success="right">Name</span>
-                    </div>
-
-                    <div class="input-field col m6">
-                        <input id="address" type="text">
-                        <!-- <label for="address">Address</label> -->
-                        <span class="helper-text" data-error="wrong" data-success="right">Address</span>
-                    </div>  
-                </div> <!--end name and address-->
-
-                <!-- start email -->
-                <div class="row">
-                    <div class="input-field col m6">
-                    <input id="email" type="text">
-                    <!-- <label for="email">Email</label> -->
-                    <span class="helper-text" data-error="wrong" data-success="right">Email</span>
-                    </div>
-                </div>
-                <!-- end email -->
-
-                <!-- start radio buttons -->
-                <div class="row">
-                    <div class="col m6">
-                    <form action="#">
-                        <p>
-                            <label>
-                            <input name="group1" type="radio" checked />
-                            <span>Gaming</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                            <input name="group1" type="radio" />
-                            <span>Sports</span>
-                            </label>
-                        </p>
-                    </form>
-                    </div>
-
-                    <!-- DATE AND TIME -->
-                    <div class="col m6">
-                        <!-- <label for="datepicker">Date</label> -->
-                        <input type="datetime-local" class="datepicker" id="#datepicker">
-                        <span class="helper-text" data-error="wrong" data-success="right">Date and Time</span>
-                    </div>
-
-                </div>
-                <!-- end radio buttons -->
-
-
-                <!-- start title -->
-                <div class="row">
-                    <div class="input-field col m6">
-                    <input id="title" type="text">
-                    <!-- <label for="title">Title</label> -->
-                    <span class="helper-text" data-error="wrong" data-success="right">Title</span>
-                    </div>
-                </div>
-                <!-- end title -->
-
-                <!-- start description -->
-                <div class="row" id="descriptionRow">
-                    <div class="input-field col m12">
-                    <textarea id="description" class="materialize-textarea"></textarea>
-                    <!-- <label for="description">Description</label> -->
-                    <span class="helper-text" data-error="wrong" data-success="right">Description</span>
-                    </div>
-                </div>
-                <!-- end description -->
-
-
-                <div class="row">
-                    <button class="btn-large fade-in" id="submitCreateDiv">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div> 
-    <!-- end createEventDiv-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </div> <!--end dynamicDiv-->
-
-
-
-
-
-
-
-    </div>
-
-    <!-- </div> -->
-
-        <!--right space dynamicRow-->
-        <div class="col m3"></div>
-
-    </div>
-
-
-
-
-
-    </main> <!--end main-->
-
-
+    </main>
+    <!--end main-->
     <footer></footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- JQUERY -->
-<script
-src="https://code.jquery.com/jquery-3.3.1.min.js"
-integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-crossorigin="anonymous"></script>
-<!-- JAVASCRIPT -->
-<script src="./assets/js/scripts.js">
-// document.addEventListener('DOMContentLoaded', function() {
-//     var elems = document.querySelectorAll('.datepicker');
-//     var instances = M.Datepicker.init(elems, options);
-//   });
-  </script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBmSBDjAPa-8O1_Kp495smE2USfwIK_3nc",
+            authDomain: "game-on-33a97.firebaseapp.com",
+            databaseURL: "https://game-on-33a97.firebaseio.com",
+            projectId: "game-on-33a97",
+            storageBucket: "game-on-33a97.appspot.com",
+            messagingSenderId: "62946106120"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- JAVASCRIPT -->
+    <script src="./assets/js/scripts.js">
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var elems = document.querySelectorAll('.datepicker');
+        //     var instances = M.Datepicker.init(elems, options);
+        //   });
+    </script>
 
 
 </body>
+
 </html>

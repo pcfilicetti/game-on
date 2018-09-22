@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Firebase</title>
+</head>
+
+<body>
+    <input type="text" id="inputTitle" placeholder="Title..." />
+    <input type="text" id="inputAddress" placeholder="Address..." />
+    <input type="text" id="inputZip" placeholder="Zip Code..." />
+    <input type="text" id="inputContact" placeholder="Phone Number..." />
+    <input type="text" id="inputDescription" placeholder="Brief Description..." />
+    <input type="datetime-local" id="inputDateTime" />
+    <form>
+        <fieldset>
+            <div>
+                <input type="radio" id="sports" name="drone" value="0" checked />
+                <label for="sports">Sports</label>
+            </div>
+            <div>
+                <input type="radio" id="gaming" name="drone" value="1" />
+                <label for="gaming">Gaming</label>
+            </div>
+        </fieldset>
+    </form>
+    <input type="submit" id="testSubmit" />
+    <div id="testResults"></div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBmSBDjAPa-8O1_Kp495smE2USfwIK_3nc",
+            authDomain: "game-on-33a97.firebaseapp.com",
+            databaseURL: "https://game-on-33a97.firebaseio.com",
+            projectId: "game-on-33a97",
+            storageBucket: "game-on-33a97.appspot.com",
+            messagingSenderId: "62946106120"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="firebaseScript.js"></script>
+</body>
+
+</html>

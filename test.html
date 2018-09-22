@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Game On!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- MATERIALIZE CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- ANIMATE CSS -->
+    <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <!-- OUR CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/styles.css" />
+</head>
+
+<body>
+    <header>    
+        <!-- logoDiv -->
+        <div class="row" id="logoDiv"></div>
+    </header>
+
+    <!--start main-->
+    <main> 
+    
+    <div class="row" id="buttonRow">
+        <!-- left space buttonRow-->
+        <div class="col m3"></div>
+        <!-- findDiv -->
+        <div class="col m3" id="findDiv"></div>       
+        <!-- createDiv -->
+        <div class="col m3" id="createDiv"></div>
+        <!-- right space buttonRow -->
+        <div class="col m3"></div>
+    </div> 
+    <!--end buttonRow-->
+
+    <!-- start dynamic area -->
+    <div class="row" id="dynamicRow">
+
+    <!--left space dynamicRow-->
+    <div class="col m3"></div>
+
+    <div class="col m6">
+    <!-- start dynamicDiv -->
+    <div id="dynamicDiv">
+
+        <div class="container" id="findEventDiv">
+
+            <div class="row" id="zipCodeRow">
+
+                <div class="col m4"></div>
+
+                <div class="col m4">
+
+                    <form>
+                        <div class="row center-align" id="rowCenterZip">
+                            <!-- <strong>Enter your zip code:</strong> -->
+                            <div class="input-field">
+                            <input id="zipCode" type="text" class="validate center-align">
+                            <label for="zipCode">Zip Code</label>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="col m4"></div>
+
+            </div>
+
+
+            <div class="row" id="gameSportsRow">
+
+                <div class="col m6">
+                    <div class="container">
+                        <button class="btn fade-in center-align" id="gamingBtn">Gaming</button>
+                    </div>
+                </div>
+
+                <div class="col m6">
+                    <div class="container">
+                      <button class="btn fade-in center-align" id="sportsBtn">Sports</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" id="submitFindDiv">
+
+                <div class="col m12">
+
+                    <button class="btn fade-in center-align" id="submitBtnFind">Submit</button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+<!-- ------------------------------- -->
+
+    <div class="container fade-in" id="createEventDiv">
+
+        <div class="row" id="eventFirstRow">
+            <form class="col m12">
+                <div class="row">
+                    <!-- start name and address -->
+                    <div class="input-field col m6">
+                        <input id="name" type="text">
+                        <label for="name">Name</label>
+                    </div>
+
+                    <div class="input-field col m6">
+                        <input id="address" type="text">
+                        <label for="address">Address</label>
+                    </div>  
+                </div> <!--end name and address-->
+
+                <!-- start email -->
+                <div class="row">
+                    <div class="input-field col m6">
+                    <input id="email" type="text">
+                    <label for="email">Email</label>
+                    </div>
+                </div>
+                <!-- end email -->
+
+                <!-- start radio buttons -->
+                <div class="row">
+                    <div class="col m6">
+                    <form action="#">
+                        <p>
+                            <label>
+                            <input name="group1" type="radio" checked />
+                            <span>Gaming</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                            <input name="group1" type="radio" />
+                            <span>Sports</span>
+                            </label>
+                        </p>
+                    </form>
+                    </div>
+
+                    <!-- DATE AND TIME -->
+                    <div class="col m6">
+                        <label for="datepicker">Date</label>
+                        <input type="text" class="datepicker" id="#datepicker">
+                    </div>
+
+                </div>
+                <!-- end radio buttons -->
+
+
+                <!-- start title -->
+                <div class="row">
+                    <div class="input-field col m6">
+                    <input id="title" type="text">
+                    <label for="title">Title</label>
+                    </div>
+                </div>
+                <!-- end title -->
+
+                <!-- start description -->
+                <div class="row" id="descriptionRow">
+                    <div class="input-field col m12">
+                    <textarea id="description" class="materialize-textarea"></textarea>
+                    <label for="description">Description</label>
+                    </div>
+                </div>
+                <!-- end description -->
+
+
+                <div class="row">
+                    <button class="btn-large fade-in" id="submitCreateDiv">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div> 
+    <!-- end createEventDiv-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div> <!--end dynamicDiv-->
+
+
+
+
+
+
+
+    </div>
+
+    <!-- </div> -->
+
+        <!--right space dynamicRow-->
+        <div class="col m3"></div>
+
+    </div>
+
+
+
+
+
+    </main> <!--end main-->
+
+
+    <footer></footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- JQUERY -->
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<!-- JAVASCRIPT -->
+<script src="./assets/js/scripts.js">
+// document.addEventListener('DOMContentLoaded', function() {
+//     var elems = document.querySelectorAll('.datepicker');
+//     var instances = M.Datepicker.init(elems, options);
+//   });
+  </script>
+
+<script>
+    $("#submit").on("click", function(event) {
+      event.preventDefault();
+
+      // Form validation
+      function validateForm() {
+        var isValid = true;
+        $(".form-control").each(function() {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+
+        $(".chosen-select").each(function() {
+
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+        return isValid;
+      }
+
+      // If all required fields are filled
+      if (validateForm()) {
+        // Create an object for the user"s data
+        var userData = {
+          name: $("#name").val(),
+          photo: $("#photo").val(),
+          scores: [
+            $("#q1").val(),
+            $("#q2").val(),
+            $("#q3").val(),
+            $("#q4").val(),
+            $("#q5").val(),
+            $("#q6").val(),
+            $("#q7").val(),
+            $("#q8").val(),
+            $("#q9").val(),
+            $("#q10").val()
+          ]
+        };
+</script>
+
+
+</body>
+</html>
