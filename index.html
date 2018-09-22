@@ -109,12 +109,14 @@
                     <!-- start name and address -->
                     <div class="input-field col m6">
                         <input id="name" type="text">
-                        <label for="name">Name</label>
+                        <!-- <label for="name">Name</label> -->
+                        <span class="helper-text" data-error="wrong" data-success="right">Name</span>
                     </div>
 
                     <div class="input-field col m6">
                         <input id="address" type="text">
-                        <label for="address">Address</label>
+                        <!-- <label for="address">Address</label> -->
+                        <span class="helper-text" data-error="wrong" data-success="right">Address</span>
                     </div>  
                 </div> <!--end name and address-->
 
@@ -122,7 +124,8 @@
                 <div class="row">
                     <div class="input-field col m6">
                     <input id="email" type="text">
-                    <label for="email">Email</label>
+                    <!-- <label for="email">Email</label> -->
+                    <span class="helper-text" data-error="wrong" data-success="right">Email</span>
                     </div>
                 </div>
                 <!-- end email -->
@@ -148,8 +151,9 @@
 
                     <!-- DATE AND TIME -->
                     <div class="col m6">
-                        <label for="datepicker">Date</label>
-                        <input type="text" class="datepicker" id="#datepicker">
+                        <!-- <label for="datepicker">Date</label> -->
+                        <input type="datetime-local" class="datepicker" id="#datepicker">
+                        <span class="helper-text" data-error="wrong" data-success="right">Date and Time</span>
                     </div>
 
                 </div>
@@ -160,7 +164,8 @@
                 <div class="row">
                     <div class="input-field col m6">
                     <input id="title" type="text">
-                    <label for="title">Title</label>
+                    <!-- <label for="title">Title</label> -->
+                    <span class="helper-text" data-error="wrong" data-success="right">Title</span>
                     </div>
                 </div>
                 <!-- end title -->
@@ -169,7 +174,8 @@
                 <div class="row" id="descriptionRow">
                     <div class="input-field col m12">
                     <textarea id="description" class="materialize-textarea"></textarea>
-                    <label for="description">Description</label>
+                    <!-- <label for="description">Description</label> -->
+                    <span class="helper-text" data-error="wrong" data-success="right">Description</span>
                     </div>
                 </div>
                 <!-- end description -->
