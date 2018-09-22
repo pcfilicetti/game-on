@@ -79,7 +79,7 @@ $(document).ready(function() {
     // name X
     // address X
     // email X
-    // sports or gaming
+    // sports or gaming X
     // title X
     // description X
     // date and time
