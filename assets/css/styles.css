@@ -28,8 +28,18 @@ body {
     margin: 0 auto;
 }
 
+.btn {
+background-color: #872020;
+display: block;
+}
+
+.btn:hover {
+background-color: #265709;
+}
+
 .btn-large {
 background-color: #872020;
+display: block;
 }
 
 .btn-large:hover {
@@ -40,9 +50,37 @@ background-color: #265709;
 color: black;
 }
 
-.input-field:hover {
+.input-field:active {
 color: black;
 }
+
+#dynamicDiv {
+background-color: white;
+border-radius: 5px;
+margin: 0;
+padding-bottom: 5px;
+}
+
+button {
+margin: 0 auto;
+}
+
+#rowCenterZip {
+margin: 0;
+}
+
+#descriptionRow {
+padding-bottom: 0px;
+}
+
+#eventFirstRow {
+padding-bottom: 0px;
+}
+
+
+
+
+
 
 
 
