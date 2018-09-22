@@ -4,6 +4,9 @@ $(document).ready(function() {
     $("#resultsDiv").hide();
     $("#gameSportsRow").hide();
     $("#createEventDiv").hide();
+    $("#dynamicDiv").hide();
+    $("#findEventDiv").hide();
+    $('.datepicker').hide();
 
     function createLogo() {
         var logo = $("<img>", {
@@ -43,30 +46,11 @@ $(document).ready(function() {
             $("#createDiv").empty();
 
             // show - hide
-            $("#resultsDiv").show();
+            $("#dynamicDiv").show();
+            $("#findEventDiv").show();
+            // $("#resultsDiv").show();
             $("#gameSportsRow").show();
             $("#submitBtnRow").show();
-
-            var gamingBtn = $("<button>", {
-                class: "btn-large fade-in",
-                id: "gamingBtn",
-                text: "Gaming"
-            });
-            $("#gamingBtnDiv").append(gamingBtn);
-
-            var sportsBtn = $("<button>", {
-                class: "btn-large fade-in",
-                id: "sportsBtn",
-                text: "Sports"
-            });
-            $("#sportsBtnDiv").append(sportsBtn);
-
-            var submitBtnFind = $("<button>", {
-                class: "btn-large fade-in",
-                id: "submitBtnFind",
-                text: "Submit"
-            });
-            $("#submitBtnDiv").append(submitBtnFind);
 
         });
     };
@@ -76,9 +60,12 @@ $(document).ready(function() {
         $("#createGroup").click(function() {
             $("#findDiv").empty();
             $("#createDiv").empty();
+            $('.datepicker').show();
         
             // show - hide
             $("#createEventDiv").show();
+            $("#dynamicDiv").show();
+
 
         });
 
@@ -96,7 +83,7 @@ $(document).ready(function() {
     // title X
     // description X
     // date and time
-    // submit button
+    // submit button X
 
 
 
