@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
+    // ALL THE HIDDEN ITEMS
     $("#resultsDiv").hide();
+    $("#gameSportsRow").hide();
 
     function createLogo() {
         var logo = $("<img>", {
@@ -17,12 +19,11 @@ $(document).ready(function() {
         var findGroup = $("<button>", {
             class: "btn-large slide-in-blurred-left",
             id: "findGroup",
-            text: "Find a game near you!"
+            text: "Find an event near you!"
         });
         $("#findDiv").append(findGroup);
     };
     createFindGroup();
-
 
     function createCreateGroup() {
         var createGroup = $("<button>", {
@@ -42,6 +43,8 @@ $(document).ready(function() {
 
             // show - hide
             $("#resultsDiv").show();
+            $("#gameSportsRow").show();
+            $("#submitBtnRow").show();
 
             var gamingBtn = $("<button>", {
                 class: "btn-large",
@@ -53,13 +56,30 @@ $(document).ready(function() {
             var sportsBtn = $("<button>", {
                 class: "btn-large",
                 id: "sportsBtn",
-                test: "Sports"
+                text: "Sports"
             });
             $("#sportsBtnDiv").append(sportsBtn);
+
+            var submitBtnFind = $("<button>", {
+                class: "btn-large",
+                id: "submitBtnFind",
+                text: "Submit"
+            });
+            $("#submitBtnDiv").append(submitBtnFind);
+
         });
     };
     createSearchDiv();
 
+
+// create:
+    // name X
+    // address X
+    // email X
+    // sports or gaming
+    // title X
+    // description X
+    // date and time
 
 
 
