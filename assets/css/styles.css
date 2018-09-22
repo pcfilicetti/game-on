@@ -77,11 +77,30 @@ padding-bottom: 0px;
 padding-bottom: 0px;
 }
 
+[type="radio"]:checked + span:after {
+border: 1px solid black;
+background-color: black;
+}
 
 
+/* label focus color */
+.input-field input:focus + label {
+color: black !important;
+}
+/* label underline focus color */
+.row .input-field input:focus {
+border-bottom: 1px solid black !important;
+box-shadow: 0 1px 0 0 black !important
+}
 
+.input-field textarea:focus + label {
+color: black !important;
+}
 
-
+.row .input-field textarea:focus {
+border-bottom: 1px solid black !important;
+box-shadow: 0 1px 0 0 black !important
+}
 
 
 .slide-in-blurred-bottom {
