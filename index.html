@@ -52,13 +52,13 @@
                 
                 <div class="row" id="zipCodeRow">
 
-                    <div class="container" id="resultsDiv">
+                    <div class="container fade-in" id="resultsDiv">
                         <div class="col m12">
 
                             <strong>Enter your zip code:</strong>
                             <div class="input-field inline">
 
-                            <input id="zipCode" type="text" class="validate">
+                            <input id="zipCode" type="text">
 
                             </div>
                         </div>
@@ -97,43 +97,52 @@
                 </div>
 <!-- ------------------------------- -->
 
-    <div class="container" id="createEventDiv">
+    <div class="container fade-in" id="createEventDiv">
 
         <div class="row">
             <form class="col m12">
                     <div class="row">
+                        <!-- start name and address -->
                         <div class="input-field col m6">
-                        <input id="name" type="text" class="validate">
-                        <label for="name">Name</label>
+                            <input id="name" type="text">
+                            <label for="name">Name</label>
                         </div>
-                    </div>
 
+                        <div class="input-field col m6">
+                            <input id="address" type="text">
+                            <label for="address">Address</label>
+                        </div>  
+                    </div> <!--end name and address-->
+
+                    <!-- start email -->
                     <div class="row">
                         <div class="input-field col m6">
-                        <input id="address" type="text" class="validate">
-                        <label for="address">Address</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col m6">
-                        <input id="email" type="text" class="validate">
+                        <input id="email" type="text">
                         <label for="email">Email</label>
                         </div>
                     </div>
+                    <!-- end email -->
 
+                    <!-- start title -->
                     <div class="row">
                         <div class="input-field col m6">
-                        <input id="title" type="text" class="validate">
+                        <input id="title" type="text">
                         <label for="title">Title</label>
                         </div>
                     </div>
+                    <!-- end title -->
 
+                    <!-- start description -->
                     <div class="row">
-                        <div class="input-field col m6">
-                        <input id="description" type="text" class="validate">
+                        <div class="input-field col m12">
+                        <textarea id="description" class="materialize-textarea"></textarea>
                         <label for="description">Description</label>
                         </div>
+                    </div>
+                    <!-- end description -->
+
+                    <div class="row">
+                        <button class="btn-large fade-in" id="submitCreateDiv">Submit</button>
                     </div>
 
                 </form>
