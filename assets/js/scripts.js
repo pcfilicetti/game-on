@@ -105,4 +105,46 @@ $(document).ready(function () {
             });
         }
     });
+
+    var findSubmit = $("#submitBtnFind");
+    var sportsBoo = false;
+    var gameBoo = false;
+    var results = [];
+    $("#sportsBtn").on("click", function (event) {
+        event.preventDefault();
+        sportsBoo = !sportsBoo;
+        if (sportsBoo && gameBoo) {
+            gameBoo = !gameBoo;
+        }
+    });
+    $("#gamingBtn").on("click", function (event) {
+        event.preventDefault();
+        gameBoo = !gameBoo;
+        if (gameBoo && sportsBoo) {
+            sportsBoo = !sportsBoo;
+        }
+    });
+    findSubmit.on("click", function (event) {
+        var zipCode = $("#zipCode").val();
+        var upZip = '' + parseInt(parseInt(zipCode) + 5);
+        var botZip = '' + parseInt(parseInt(zipCode) - 5);
+        if (sportsBoo) {
+            firebase.database().ref('events/sports').on('value', function (snap) {
+                results.push(snap.val());
+            });
+        } else if (gameBoo) {
+            firebase.database().ref('events/gaming').on('value', function (snap) {
+                results.push(snap.val());
+            });
+        }
+        setTimeout(function() {
+            for (var i in results[0]) {
+                if (parseInt(i) > upZip || parseInt(i) < botZip) {
+                    delete results[0][i];
+                }
+                console.log('for in ran');
+            }
+            console.log(results);
+        }, 1000);
+    });
 }); //end document.ready
