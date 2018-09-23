@@ -1,5 +1,12 @@
 {
   "database": {
-    "rules": "database.rules.json"
+    "rules": "database.rules.json",
+    "headers": [{
+      "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+      "headers": [{
+        "key": "Access-Control-Allow-Origin",
+        "value": "*"
+      }]
+    }]
   }
 }
