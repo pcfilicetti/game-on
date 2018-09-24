@@ -74,6 +74,30 @@ $(document).ready(function () {
     // date and time
     // submit button X
 
+    function createCard() {
+
+        var cardContent = `
+            <div class="col m4">
+                <div class="card medium">
+                    <div class="card-image">
+                        <img src="http://liherald.com/uploads/original/1433962027_7dd2.jpg">
+                        <span class="card-title">${resultTitle}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>${resultAdd} ${resultZip}</p>
+                        <p>${resultDesc}</p>
+                        <p>${resultDate}</p>
+                        <p>${resultTime}</p>
+                        <p>${resultContact}</p>
+                        <p>${resultDistance}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+
+        // return newCard.append(cardContent);
+        return cardContent;
+    }
 
     var submit = $("#submitCreateDiv");
 
@@ -119,8 +143,8 @@ $(document).ready(function () {
     // This is the code for querying the zip codes to return actual coherent data
     function queryFirebase(num) {
         var zipCode = $("#zipCode").val();
-        var upZip = '' + parseInt(parseInt(zipCode) + 5);
-        var botZip = '' + parseInt(parseInt(zipCode) - 5);
+        var upZip = '' + parseInt(parseInt(zipCode) + 30);
+        var botZip = '' + parseInt(parseInt(zipCode) - 30);
         if (num == 0) {
             firebase.database().ref('events/sports').on('value', function (snap) {
                 results.push(snap.val());
@@ -135,16 +159,11 @@ $(document).ready(function () {
                 if (parseInt(k) > upZip || parseInt(k) < botZip) {
                     delete results[0][k];
                 }
-                console.log('for in ran');
             }
             result = results[0];
-            console.log("these are the results within 5 zips");
-            console.log(result);
             var resultAdd, resultTitle, resultContact, resultDateTime, resultDate, resultTime, resultDesc;
             var today = new Date();
             for (var i in result) {
-                console.log("zipcode");
-                console.log(result[i]);
 
                 for (var j in result[i]) {
                     resultDateTime = new Date(result[i][j].dateTime);
@@ -153,18 +172,15 @@ $(document).ready(function () {
                         if (jQuery.isEmptyObject(result[i])) {
                             delete result[i];
                         }
-                        console.log("results by title");
-                        console.log(result);
                     }
 
-                    resultZip = i;
+
 
                     distanceObject = {
                         firstZip: zipCode,
                         secondZip: resultZip
                     };
 
-                    console.log("this is our distance info" + distanceObject.firstZip);
 
                     // $.get("/api/distance", function (res) {
                     //     console.log(res);
@@ -176,7 +192,6 @@ $(document).ready(function () {
                     //     console.log("the distance from user is " + resultDistance);
                     // });
 
-                    console.log("distance data is = " + resultDistance);
                     //GOOGLE DISTANCE MATRIX HERE
 
                     resultAdd = result[i][j].address;
@@ -193,41 +208,12 @@ $(document).ready(function () {
                         console.log(data);
                     });
 
-                    // generateResults(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
-                    console.log(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
 
                     //================================
 
                     var cards = $("#results");
                     cards.append(createCard());
 
-                    function createCard(cards) {
-
-                        var cardContent = `
-                    <div class="col m4">
-                        <div class="card medium">
-                            <div class="card-image">
-                            <img src="http://liherald.com/uploads/original/1433962027_7dd2.jpg">
-                                <span class="card-title">${resultTitle}</span>
-                            </div>
-                            <div class="card-content">
-                            <p>${resultAdd}</p>
-                            <p>${resultDesc}</p>
-                            <p>${resultDate}</p>
-                            <p>${resultTime}</p>
-                            <p>${resultContact}</p>
-                            <p>${resultZip}</p>
-                            <p>${resultDistance}</p>
-                            </div>
-                        </div>
-                    </div>
-                    `;
-                        console.log(cardContent);
-                        console.log(resultTitle + "oooooooooogabooga");
-
-                        // return newCard.append(cardContent);
-                        return cardContent;
-                    }
 
 
 
