@@ -4,8 +4,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
-
-
 // Sets up the Express App
 
 var app = express();
@@ -25,8 +23,6 @@ require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 app.use(express.static(path.join(__dirname, 'public'))); //Serves resources from public folder
-
-
 
 // Starts the server to begin listening
 
