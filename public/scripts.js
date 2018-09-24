@@ -227,34 +227,15 @@ $(document).ready(function () {
     // });
 
     // This is the code for querying the zip codes to return actual coherent data
-    var findSubmit = $("#submitBtnFind");
-    var sportsBoo = false;
-    var gameBoo = false;
-    var results = [];
-    var result;
-    $("#sportsBtn").on("click", function (event) {
-        event.preventDefault();
-        sportsBoo = !sportsBoo;
-        if (sportsBoo && gameBoo) {
-            gameBoo = !gameBoo;
-        }
-    });
-    $("#gamingBtn").on("click", function (event) {
-        event.preventDefault();
-        gameBoo = !gameBoo;
-        if (gameBoo && sportsBoo) {
-            sportsBoo = !sportsBoo;
-        }
-    });
-    findSubmit.on("click", function (event) {
+    function queryFirebase(num) {
         var zipCode = $("#zipCode").val();
         var upZip = '' + parseInt(parseInt(zipCode) + 5);
         var botZip = '' + parseInt(parseInt(zipCode) - 5);
-        if (sportsBoo) {
+        if(num == 0) {
             firebase.database().ref('events/sports').on('value', function (snap) {
                 results.push(snap.val());
             });
-        } else if (gameBoo) {
+        } else if (num == 1) {
             firebase.database().ref('events/gaming').on('value', function (snap) {
                 results.push(snap.val());
             });
@@ -290,6 +271,15 @@ $(document).ready(function () {
                 }
             }
         }, 1000);
+    }
+
+    var results = [];
+    var result;
+    $("#sportsBtn").on("click", function () {
+        queryFirebase(0);
+    });
+    $("#gamingBtn").on("click", function () {
+        queryFirebase(1);
     });
 
 }); //end document.ready
