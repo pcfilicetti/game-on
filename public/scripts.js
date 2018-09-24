@@ -88,6 +88,11 @@ $(document).ready(function () {
         var desc = $("#description").val();
         var date = $("#datepicker").val();
 
+        if (!title || !address || !zip || !contact || !desc || !date) {
+            window.alert("Please complete each data field.");
+            return false;
+        }
+
         if ($("#sportRadio").prop('checked')) {
             firebase.database().ref('events/sports/' + zip + '/' + title).set({
                 address: address,
@@ -95,6 +100,7 @@ $(document).ready(function () {
                 description: desc,
                 dateTime: date
             });
+            window.alert("Event submitted!");
         } else if ($("#gameRadio").prop("checked")) {
             firebase.database().ref('events/gaming/' + zip + '/' + title).set({
                 address: address,
@@ -102,6 +108,7 @@ $(document).ready(function () {
                 description: desc,
                 dateTime: date
             });
+            window.alert("Event submitted!");
         }
     });
 
@@ -252,7 +259,7 @@ $(document).ready(function () {
                 results.push(snap.val());
             });
         }
-        setTimeout(function() {
+        setTimeout(function () {
             for (var i in results[0]) {
                 if (parseInt(i) > upZip || parseInt(i) < botZip) {
                     delete results[0][i];
@@ -261,6 +268,27 @@ $(document).ready(function () {
             }
             result = results[0];
             console.log(result);
+            var resultAdd, resultTitle, resultContact, resultDateTime, resultDate, resultTime, resultDesc;
+            var today = new Date();
+            for (var i in result) {
+                for (var j in result[i]) {
+                    resultAdd = result[i][j].address;
+                    resultTitle = j;
+                    resultContact = result[i][j].contactInfo;
+                    resultDateTime = new Date(result[i][j].dateTime);
+                    resultDate = dateFormat(resultDateTime, "dddd, mmmm dS, yyyy");
+                    resultTime = dateFormat(resultDateTime, "h:MM TT");
+                    resultDesc = result[i][j].description;
+                    console.log(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
+                    if (today > resultDateTime) {
+                        delete result[i][j];
+                        if (jQuery.isEmptyObject(result[i])) {
+                            delete result[i];
+                        }
+                        console.log(result);
+                    }
+                }
+            }
         }, 1000);
     });
 
