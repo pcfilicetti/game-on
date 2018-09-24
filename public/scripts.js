@@ -200,6 +200,7 @@ $(document).ready(function () {
                     resultDate = dateFormat(resultDateTime, "dddd, mmmm dS, yyyy");
                     resultTime = dateFormat(resultDateTime, "h:MM TT");
                     resultDesc = result[i][j].description;
+                    resultZip = i;
 
                     $.ajax({
                         "url": "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zipCode + "&destinations=" + resultAdd + "&key=AIzaSyBZsXrosKvRGdreWJo2EPOxhvxor5LBaBQ",
