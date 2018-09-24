@@ -131,9 +131,9 @@ $(document).ready(function () {
             });
         }
         setTimeout(function () {
-            for (var i in results[0]) {
-                if (parseInt(i) > upZip || parseInt(i) < botZip) {
-                    delete results[0][i];
+            for (var k in results[0]) {
+                if (parseInt(k) > upZip || parseInt(k) < botZip) {
+                    delete results[0][k];
                 }
                 console.log('for in ran');
             }
@@ -143,7 +143,7 @@ $(document).ready(function () {
             var resultAdd, resultTitle, resultContact, resultDateTime, resultDate, resultTime, resultDesc;
             var today = new Date();
             for (var i in result) {
-                console.log("zipcode")
+                console.log("zipcode");
                 console.log(result[i]);
 
                 for (var j in result[i]) {
@@ -157,12 +157,12 @@ $(document).ready(function () {
                         console.log(result);
                     }
 
-                    resultZip = result[i][j].zip;
+                    resultZip = i;
 
                     distanceObject = {
                         firstZip: zipCode,
                         secondZip: resultZip
-                    }
+                    };
 
                     console.log("this is our distance info" + distanceObject.firstZip);
 
@@ -171,10 +171,10 @@ $(document).ready(function () {
                     //     // resultDistance = distanceData;
                     // });
 
-                    $.post("/api/distance", distanceObject, function (res) {
-                        resultDistance = res;
-                        console.log("the distance from user is " + resultDistance);
-                    });
+                    // $.post("/api/distance", distanceObject, function (res) {
+                    //     resultDistance = res;
+                    //     console.log("the distance from user is " + resultDistance);
+                    // });
 
                     console.log("distance data is = " + resultDistance);
                     //GOOGLE DISTANCE MATRIX HERE
@@ -186,6 +186,12 @@ $(document).ready(function () {
                     resultTime = dateFormat(resultDateTime, "h:MM TT");
                     resultDesc = result[i][j].description;
 
+                    $.ajax({
+                        "url": "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zipCode + "&destinations=" + resultAdd + "&key=AIzaSyBZsXrosKvRGdreWJo2EPOxhvxor5LBaBQ",
+                        "method": "GET"
+                    }).then(function (data) {
+                        console.log(data);
+                    });
 
                     // generateResults(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
                     console.log(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
@@ -215,9 +221,9 @@ $(document).ready(function () {
                             </div>
                         </div>
                     </div>
-                    `
+                    `;
                         console.log(cardContent);
-                        console.log(resultTitle + "oooooooooogabooga")
+                        console.log(resultTitle + "oooooooooogabooga");
 
                         // return newCard.append(cardContent);
                         return cardContent;
