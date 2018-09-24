@@ -1,6 +1,6 @@
 body {
     margin: 0 auto;
-    background-color: #9ab2ce;
+    background-color: white;
     background-repeat: no-repeat;
     background-size: auto;
 }
@@ -59,7 +59,7 @@ background-color: white;
 border-radius: 5px;
 margin: 0;
 padding-bottom: 5px;
-z-index: 1000;
+z-index: 2000;
 }
 
 button {
@@ -108,6 +108,16 @@ box-shadow: 0 1px 0 0 black !important
     animation: slide-in-blurred-bottom 1s ease-in-out both;
 }
 
+#overlay{
+    position:absolute;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+	background-color: white;
+	opacity: 0.7;
+	z-index: -100;
+}
 
 /* START SLIDESHOW */
 /* CSS reset */
@@ -119,19 +129,19 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
 	margin:0;
 	padding:0;
 } */
-table {
+/* table {
 	border-collapse:collapse;
 	border-spacing:0;
-}
+} */
 fieldset,img { 
 	border:0;
 }
-input{
+/* input{
 	border:1px solid #b0b0b0;
 	padding:3px 5px 4px;
 	color:#979797;
 	width:190px;
-}
+} */
 
 ol,ul {
 	list-style:none;
@@ -143,16 +153,16 @@ caption,th {
 q:before,q:after {
 	content:'';
 }
-abbr,acronym { border:0;
-}
+/* abbr,acronym { border:0;
+} */
 /* General Demo Style */
 body{
-  font-family: "helvetica neue", helvetica;
-	background: #000;
-	font-weight: 400;
-	font-size: 15px;
+  /* font-family: "helvetica neue", helvetica; */
+	/* background: #000; */
+	/* font-weight: 400; */
+	/* font-size: 15px; */
 	/* color: #aa3e03; */
-	overflow-y: scroll;
+	/* overflow-y: scroll; */
 	overflow-x: hidden;
 }
 .ie7 body{
@@ -236,6 +246,15 @@ body{
     -o-animation-delay: 12s;
     -ms-animation-delay: 12s;
     animation-delay: 12s;
+}
+
+.slideshow li:nth-child(5) span {
+    background-image: url("./swim3.jpg");
+    -webkit-animation-delay: 16s;
+    -moz-animation-delay: 16s;
+    -o-animation-delay: 16s;
+    -ms-animation-delay: 16s;
+    animation-delay: 16s;
 }
 
 /* Animation for the slideshow images */
