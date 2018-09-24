@@ -98,7 +98,8 @@ $(document).ready(function () {
                 address: address,
                 contactInfo: contact,
                 description: desc,
-                dateTime: date
+                dateTime: date,
+                zip: zip
             });
             window.alert("Event submitted!");
         } else if ($("#gameRadio").prop("checked")) {
@@ -106,34 +107,16 @@ $(document).ready(function () {
                 address: address,
                 contactInfo: contact,
                 description: desc,
-                dateTime: date
+                dateTime: date,
+                zip: zip
             });
             window.alert("Event submitted!");
         }
     });
 
+    var resultDistance;
 
     // This is the code for querying the zip codes to return actual coherent data
-    function generateResults(title, address, contact, date, time, description) {
-        var cardContent = `
-        <div class="col m4">
-            <div class="card medium">
-                <div class="card-image">
-                    <img src="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwjk3b3um9TdAhWEFogKHRFJDqgQjRx6BAgBEAU&url=https%3A%2F%2Fpixabay.com%2Fen%2Fphotos%2Fbasketball%2F&psig=AOvVaw0sQftJorehBxBmakdEFP_y&ust=1537898326943505">
-                    <span class="card-title">${title}</span>
-                </div>
-                <div class="card-content">
-                  <p>${address}</p>
-                  <p>${description}</p>
-                  <p>${date}</p>
-                  <p>${time}</p>
-                  <p>${contact}</p>
-                </div>
-            </div>
-        </div>
-        `;
-    }
-
     function queryFirebase(num) {
         var zipCode = $("#zipCode").val();
         var upZip = '' + parseInt(parseInt(zipCode) + 5);
@@ -155,10 +138,14 @@ $(document).ready(function () {
                 console.log('for in ran');
             }
             result = results[0];
+            console.log("these are the results within 5 zips");
             console.log(result);
             var resultAdd, resultTitle, resultContact, resultDateTime, resultDate, resultTime, resultDesc;
             var today = new Date();
             for (var i in result) {
+                console.log("zipcode")
+                console.log(result[i]);
+
                 for (var j in result[i]) {
                     resultDateTime = new Date(result[i][j].dateTime);
                     if (today > resultDateTime) {
@@ -166,9 +153,30 @@ $(document).ready(function () {
                         if (jQuery.isEmptyObject(result[i])) {
                             delete result[i];
                         }
+                        console.log("results by title");
                         console.log(result);
                     }
 
+                    resultZip = result[i][j].zip;
+
+                    distanceObject = {
+                        firstZip: zipCode,
+                        secondZip: resultZip
+                    }
+
+                    console.log("this is our distance info" + distanceObject.firstZip);
+
+                    // $.get("/api/distance", function (res) {
+                    //     console.log(res);
+                    //     // resultDistance = distanceData;
+                    // });
+
+                    $.post("/api/distance", distanceObject, function (res) {
+                        resultDistance = res;
+                        console.log("the distance from user is " + resultDistance);
+                    });
+
+                    console.log("distance data is = " + resultDistance);
                     //GOOGLE DISTANCE MATRIX HERE
 
                     resultAdd = result[i][j].address;
@@ -177,6 +185,8 @@ $(document).ready(function () {
                     resultDate = dateFormat(resultDateTime, "dddd, mmmm dS, yyyy");
                     resultTime = dateFormat(resultDateTime, "h:MM TT");
                     resultDesc = result[i][j].description;
+
+
                     // generateResults(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
                     console.log(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
 
@@ -200,6 +210,8 @@ $(document).ready(function () {
                             <p>${resultDate}</p>
                             <p>${resultTime}</p>
                             <p>${resultContact}</p>
+                            <p>${resultZip}</p>
+                            <p>${resultDistance}</p>
                             </div>
                         </div>
                     </div>

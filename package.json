@@ -26,6 +26,8 @@
     "google-distance-matrix": "^1.1.1",
     "node-fetch": "^2.2.0",
     "node-geocoder": "^3.22.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "request": "^2.88.0",
+    "require": "^2.4.20"
   }
 }
