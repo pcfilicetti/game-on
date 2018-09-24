@@ -125,23 +125,11 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
 	margin:0;
 	padding:0;
 }
-/* html,body {
-	margin:0;
-	padding:0;
-} */
-/* table {
-	border-collapse:collapse;
-	border-spacing:0;
-} */
+
 fieldset,img { 
 	border:0;
 }
-/* input{
-	border:1px solid #b0b0b0;
-	padding:3px 5px 4px;
-	color:#979797;
-	width:190px;
-} */
+
 
 ol,ul {
 	list-style:none;
@@ -153,25 +141,15 @@ caption,th {
 q:before,q:after {
 	content:'';
 }
-/* abbr,acronym { border:0;
-} */
+
 /* General Demo Style */
 body{
-  /* font-family: "helvetica neue", helvetica; */
-	/* background: #000; */
-	/* font-weight: 400; */
-	/* font-size: 15px; */
-	/* color: #aa3e03; */
-	/* overflow-y: scroll; */
 	overflow-x: hidden;
 }
 .ie7 body{
 	overflow:hidden;
 }
-/* a{
-	color: #333;
-	text-decoration: none;
-} */
+
 .container{
 	position: relative;
 	text-align: center;
@@ -179,14 +157,7 @@ body{
 .clr{
 	clear: both;
 }
-/* .container > header{
-	padding: 30px 30px 10px 20px;
-	margin: 0px 20px 10px 20px;
-	position: relative;
-	display: block;
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-    text-align: left;
-} */
+
 
 .slideshow,
 .slideshow:after {
