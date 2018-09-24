@@ -195,66 +195,67 @@ $(document).ready(function () {
     //         // /data/goSports is a TEST.  will need to CHANGE TO FIREBASE GET
 
     //         $.get("/data/goSports", function (data) {
-    //             for (var i = 0; i < data.length; i++) {
-    //                 cards.append(createCard(data[i]));
-    //             }
+                // for (var i = 0; i < data.length; i++) {
+                //     cards.append(createCard(data[i]));
+                // }
 
-    //             function createCard(card) {
+                // function createCard(card) {
 
-    //                 var cardContent = `
-    //             <div class="col m4">
-    //                 <div class="card medium">
-    //                     <div class="card-image">
-    //                         <img src="${card.image}">
-    //                         <span class="card-title">${card.title}</span>
-    //                     </div>
-    //                     <div class="card-content">
-    //                       <p>${card.address}</p>
-    //                       <p>${card.description}</p>
-    //                       <p>${card.dateTime}</p>
-    //                       <p>${card.contactInfo}</p>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //             `
-    //                 console.log(cardContent);
+                //     var cardContent = `
+                // <div class="col m4">
+                //     <div class="card medium">
+                //         <div class="card-image">
+                //             <img src="${card.image}">
+                //             <span class="card-title">${card.title}</span>
+                //         </div>
+                //         <div class="card-content">
+                //           <p>${card.address}</p>
+                //           <p>${card.description}</p>
+                //           <p>${card.dateTime}</p>
+                //           <p>${card.contactInfo}</p>
+                //         </div>
+                //     </div>
+                // </div>
+                // `
+            //         console.log(cardContent);
 
-    //                 // return newCard.append(cardContent);
-    //                 return cardContent;
-    //             }
-    //         });
+            //         // return newCard.append(cardContent);
+            //         return cardContent;
+            //     }
+            // });
     //     }
     // });
 
     // This is the code for querying the zip codes to return actual coherent data
-    var findSubmit = $("#submitBtnFind");
-    var sportsBoo = false;
-    var gameBoo = false;
-    var results = [];
-    var result;
-    $("#sportsBtn").on("click", function (event) {
-        event.preventDefault();
-        sportsBoo = !sportsBoo;
-        if (sportsBoo && gameBoo) {
-            gameBoo = !gameBoo;
-        }
-    });
-    $("#gamingBtn").on("click", function (event) {
-        event.preventDefault();
-        gameBoo = !gameBoo;
-        if (gameBoo && sportsBoo) {
-            sportsBoo = !sportsBoo;
-        }
-    });
-    findSubmit.on("click", function (event) {
+    function generateResults(title, address, contact, date, time, description) {
+        var cardContent = `
+        <div class="col m4">
+            <div class="card medium">
+                <div class="card-image">
+                    <img src="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwjk3b3um9TdAhWEFogKHRFJDqgQjRx6BAgBEAU&url=https%3A%2F%2Fpixabay.com%2Fen%2Fphotos%2Fbasketball%2F&psig=AOvVaw0sQftJorehBxBmakdEFP_y&ust=1537898326943505">
+                    <span class="card-title">${title}</span>
+                </div>
+                <div class="card-content">
+                  <p>${address}</p>
+                  <p>${description}</p>
+                  <p>${date}</p>
+                  <p>${time}</p>
+                  <p>${contact}</p>
+                </div>
+            </div>
+        </div>
+        `;
+    }
+
+    function queryFirebase(num) {
         var zipCode = $("#zipCode").val();
         var upZip = '' + parseInt(parseInt(zipCode) + 5);
         var botZip = '' + parseInt(parseInt(zipCode) - 5);
-        if (sportsBoo) {
+        if(num == 0) {
             firebase.database().ref('events/sports').on('value', function (snap) {
                 results.push(snap.val());
             });
-        } else if (gameBoo) {
+        } else if (num == 1) {
             firebase.database().ref('events/gaming').on('value', function (snap) {
                 results.push(snap.val());
             });
@@ -272,14 +273,7 @@ $(document).ready(function () {
             var today = new Date();
             for (var i in result) {
                 for (var j in result[i]) {
-                    resultAdd = result[i][j].address;
-                    resultTitle = j;
-                    resultContact = result[i][j].contactInfo;
                     resultDateTime = new Date(result[i][j].dateTime);
-                    resultDate = dateFormat(resultDateTime, "dddd, mmmm dS, yyyy");
-                    resultTime = dateFormat(resultDateTime, "h:MM TT");
-                    resultDesc = result[i][j].description;
-                    console.log(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
                     if (today > resultDateTime) {
                         delete result[i][j];
                         if (jQuery.isEmptyObject(result[i])) {
@@ -287,9 +281,26 @@ $(document).ready(function () {
                         }
                         console.log(result);
                     }
+                    resultAdd = result[i][j].address;
+                    resultTitle = j;
+                    resultContact = result[i][j].contactInfo;
+                    resultDate = dateFormat(resultDateTime, "dddd, mmmm dS, yyyy");
+                    resultTime = dateFormat(resultDateTime, "h:MM TT");
+                    resultDesc = result[i][j].description;
+                    // generateResults(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
+                    console.log(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
                 }
             }
         }, 1000);
+    }
+
+    var results = [];
+    var result;
+    $("#sportsBtn").on("click", function () {
+        queryFirebase(0);
+    });
+    $("#gamingBtn").on("click", function () {
+        queryFirebase(1);
     });
 
 }); //end document.ready
