@@ -89,7 +89,7 @@ $(document).ready(function () {
         var desc = $("#description").val();
         var date = $("#datepicker").val();
 
-        if(!title || !address || !zip || !contact || !desc || !date) {
+        if (!title || !address || !zip || !contact || !desc || !date) {
             window.alert("Please complete each data field.");
             return false;
         }
@@ -270,6 +270,7 @@ $(document).ready(function () {
             result = results[0];
             console.log(result);
             var resultAdd, resultTitle, resultContact, resultDateTime, resultDate, resultTime, resultDesc;
+            var today = new Date();
             for (var i in result) {
                 for (var j in result[i]) {
                     resultAdd = result[i][j].address;
@@ -280,6 +281,13 @@ $(document).ready(function () {
                     resultTime = dateFormat(resultDateTime, "h:MM TT");
                     resultDesc = result[i][j].description;
                     console.log(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
+                    if (today > resultDateTime) {
+                        delete result[i][j];
+                        if (jQuery.isEmptyObject(result[i])) {
+                            delete result[i];
+                        }
+                        console.log(result);
+                    }
                 }
             }
         }, 1000);
