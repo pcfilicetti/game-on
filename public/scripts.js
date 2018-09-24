@@ -98,7 +98,8 @@ $(document).ready(function () {
                 address: address,
                 contactInfo: contact,
                 description: desc,
-                dateTime: date
+                dateTime: date,
+                zip: zip
             });
             window.alert("Event submitted!");
         } else if ($("#gameRadio").prop("checked")) {
@@ -106,152 +107,21 @@ $(document).ready(function () {
                 address: address,
                 contactInfo: contact,
                 description: desc,
-                dateTime: date
+                dateTime: date,
+                zip: zip
             });
             window.alert("Event submitted!");
         }
     });
 
-    // BELOW CODE IS FOR TESTING................
-    // var submit = $("#submitCreateDiv");
-
-    // submit.on("click", function (event) {
-
-    //     event.preventDefault();
-
-
-    //     if ($("#gameRadio").prop('checked') && $("#image").val() == 0) {
-    //         var image = "https://i.amz.mshcdn.com/VN4DYfj6y_-7pAft3TwiTbipdFg=/950x534/filters:quality(90)/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F664750%2F8fcbb4ea-e47d-453b-9eda-46d8c333ae80.jpg";
-    //     }
-    //     else if ($("#sportRadio").prop('checked') && $("#image").val() == 0) {
-    //         var image = "https://www.michaelgleibermd.com/news/wp-content/uploads/2015/01/year-round-sports.jpg";
-    //     } else {
-    //         var image = $("#image").val();
-    //     }
-
-    //     var newGame = {
-    //         zip: parseInt($("#zip").val()),
-    //         image: image,
-    //         title: $("#title").val(),
-    //         address: $("#address").val(),
-    //         desc: $("#description").val(),
-    //         dateTime: $("#datepicker").val(),
-    //         contactInfo: $("#email").val(),
-    //     };
-
-    //     if ($("#sportRadio").prop('checked')) {
-
-    //         $.post("/data/goSports", newGame);
-
-    //     } else if ($("#gameRadio").prop("checked")) {
-
-    //         $.post("/data/goGames", newGame);
-    //     }
-    // });
-
-
-    // //...............END OF ABOVE TEST
-
-    // $("#submitBtnFind").on("click", function () {
-
-    //     var cards = $("#results");
-
-    //     if (sports = true) {
-
-    //         // /data/goGames is a TEST.  will need to CHANGE TO FIREBASE GET
-    //         $.get("/data/goGames", function (data) {
-    //             for (var i = 0; i < data.length; i++) {
-    //                 cards.append(createCard(data[i]));
-    //             }
-
-    //             function createCard(card) {
-
-    //                 var cardContent = `
-    //             <div class="col m4">
-    //                 <div class="card medium">
-    //                     <div class="card-image">
-    //                         <img src="${card.image}">
-    //                         <span class="card-title">${card.title}</span>
-    //                     </div>
-    //                     <div class="card-content">
-    //                       <p>${card.address}</p>
-    //                       <p>${card.description}</p>
-    //                       <p>${card.dateTime}</p>
-    //                       <p>${card.contactInfo}</p>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //             `
-    //                 console.log(cardContent);
-
-    //                 // return newCard.append(cardContent);
-    //                 return cardContent;
-    //             }
-    //         });
-    //     }
-
-    //     if (games = true) {
-
-    //         // /data/goSports is a TEST.  will need to CHANGE TO FIREBASE GET
-
-    //         $.get("/data/goSports", function (data) {
-                // for (var i = 0; i < data.length; i++) {
-                //     cards.append(createCard(data[i]));
-                // }
-
-                // function createCard(card) {
-
-                //     var cardContent = `
-                // <div class="col m4">
-                //     <div class="card medium">
-                //         <div class="card-image">
-                //             <img src="${card.image}">
-                //             <span class="card-title">${card.title}</span>
-                //         </div>
-                //         <div class="card-content">
-                //           <p>${card.address}</p>
-                //           <p>${card.description}</p>
-                //           <p>${card.dateTime}</p>
-                //           <p>${card.contactInfo}</p>
-                //         </div>
-                //     </div>
-                // </div>
-                // `
-            //         console.log(cardContent);
-
-            //         // return newCard.append(cardContent);
-            //         return cardContent;
-            //     }
-            // });
-    //     }
-    // });
+    var resultDistance;
 
     // This is the code for querying the zip codes to return actual coherent data
-    function generateResults(title, address, contact, date, time, description) {
-        var cardContent = `
-        <div class="col m4">
-            <div class="card medium">
-                <div class="card-image">
-                    <img src="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwjk3b3um9TdAhWEFogKHRFJDqgQjRx6BAgBEAU&url=https%3A%2F%2Fpixabay.com%2Fen%2Fphotos%2Fbasketball%2F&psig=AOvVaw0sQftJorehBxBmakdEFP_y&ust=1537898326943505">
-                    <span class="card-title">${title}</span>
-                </div>
-                <div class="card-content">
-                  <p>${address}</p>
-                  <p>${description}</p>
-                  <p>${date}</p>
-                  <p>${time}</p>
-                  <p>${contact}</p>
-                </div>
-            </div>
-        </div>
-        `;
-    }
-
     function queryFirebase(num) {
         var zipCode = $("#zipCode").val();
         var upZip = '' + parseInt(parseInt(zipCode) + 5);
         var botZip = '' + parseInt(parseInt(zipCode) - 5);
-        if(num == 0) {
+        if (num == 0) {
             firebase.database().ref('events/sports').on('value', function (snap) {
                 results.push(snap.val());
             });
@@ -261,17 +131,21 @@ $(document).ready(function () {
             });
         }
         setTimeout(function () {
-            for (var i in results[0]) {
-                if (parseInt(i) > upZip || parseInt(i) < botZip) {
-                    delete results[0][i];
+            for (var k in results[0]) {
+                if (parseInt(k) > upZip || parseInt(k) < botZip) {
+                    delete results[0][k];
                 }
                 console.log('for in ran');
             }
             result = results[0];
+            console.log("these are the results within 5 zips");
             console.log(result);
             var resultAdd, resultTitle, resultContact, resultDateTime, resultDate, resultTime, resultDesc;
             var today = new Date();
             for (var i in result) {
+                console.log("zipcode");
+                console.log(result[i]);
+
                 for (var j in result[i]) {
                     resultDateTime = new Date(result[i][j].dateTime);
                     if (today > resultDateTime) {
@@ -279,16 +153,86 @@ $(document).ready(function () {
                         if (jQuery.isEmptyObject(result[i])) {
                             delete result[i];
                         }
+                        console.log("results by title");
                         console.log(result);
                     }
+
+                    resultZip = i;
+
+                    distanceObject = {
+                        firstZip: zipCode,
+                        secondZip: resultZip
+                    };
+
+                    console.log("this is our distance info" + distanceObject.firstZip);
+
+                    // $.get("/api/distance", function (res) {
+                    //     console.log(res);
+                    //     // resultDistance = distanceData;
+                    // });
+
+                    // $.post("/api/distance", distanceObject, function (res) {
+                    //     resultDistance = res;
+                    //     console.log("the distance from user is " + resultDistance);
+                    // });
+
+                    console.log("distance data is = " + resultDistance);
+                    //GOOGLE DISTANCE MATRIX HERE
+
                     resultAdd = result[i][j].address;
                     resultTitle = j;
                     resultContact = result[i][j].contactInfo;
                     resultDate = dateFormat(resultDateTime, "dddd, mmmm dS, yyyy");
                     resultTime = dateFormat(resultDateTime, "h:MM TT");
                     resultDesc = result[i][j].description;
+
+                    $.ajax({
+                        "url": "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zipCode + "&destinations=" + resultAdd + "&key=AIzaSyBZsXrosKvRGdreWJo2EPOxhvxor5LBaBQ",
+                        "method": "GET"
+                    }).then(function (data) {
+                        console.log(data);
+                    });
+
                     // generateResults(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
                     console.log(resultTitle, resultAdd, resultContact, resultDate, resultTime, resultDesc);
+
+                    //================================
+
+                    var cards = $("#results");
+                    cards.append(createCard());
+
+                    function createCard(cards) {
+
+                        var cardContent = `
+                    <div class="col m4">
+                        <div class="card medium">
+                            <div class="card-image">
+                            <img src="http://liherald.com/uploads/original/1433962027_7dd2.jpg">
+                                <span class="card-title">${resultTitle}</span>
+                            </div>
+                            <div class="card-content">
+                            <p>${resultAdd}</p>
+                            <p>${resultDesc}</p>
+                            <p>${resultDate}</p>
+                            <p>${resultTime}</p>
+                            <p>${resultContact}</p>
+                            <p>${resultZip}</p>
+                            <p>${resultDistance}</p>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                        console.log(cardContent);
+                        console.log(resultTitle + "oooooooooogabooga");
+
+                        // return newCard.append(cardContent);
+                        return cardContent;
+                    }
+
+
+
+
+                    //================================
                 }
             }
         }, 1000);

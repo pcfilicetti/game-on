@@ -1,0 +1,180 @@
+<!-- NOTE, THIS PAGE IS PRIMARILY A PLACE TO TEST CODE -->
+<!-- NOTE, THIS PAGE IS PRIMARILY A PLACE TO TEST CODE -->
+<!-- NOTE, THIS PAGE IS PRIMARILY A PLACE TO TEST CODE -->
+<!-- NOTE, THIS PAGE IS PRIMARILY A PLACE TO TEST CODE -->
+<!-- NOTE, THIS PAGE IS PRIMARILY A PLACE TO TEST CODE -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tables Page</title>
+ 
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!-- MATERIALIZE CSS   -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- ANIMATE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+
+</head>
+
+<style>
+    
+/* .card-image{
+    height: 400px; /* Your height here */
+    /* /* overflow: hidden;} */
+
+/* .card-image {
+    height:250px;
+    width:100%;
+} */
+
+</style>
+
+
+<!-- BODY -->
+
+<body>
+
+    <div class="container">
+
+        <div class="row">
+
+            <h4> GAME READY</h4>
+
+            <div id="results" class="row">
+                <!-- <ul id="testList" class="list-group"></ul> -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+
+
+<!-- SCRIPT -->
+<script type="text/javascript">
+
+    // TEST OBJECTS
+    // ===============================
+
+    var testData = [
+        {
+            image: "https://1basil1.files.wordpress.com/2013/05/doin-it-in-the-park-old-school-slam-jam.jpg",
+            title: "Hoops in Arlington",
+            address: "1234 Clarendon Dr",
+            description: "We like to play regularly at this spot, feel free to join us!",
+            date: "9/21",
+            time: "5 pm",
+            contact: "Tweet me @dunkmasterJ",
+        }
+        ,
+        {
+            image: "https://images.penguinrandomhouse.com/cover/9781506703480",
+            title: "DotA in Merrifield",
+            address: "5678 Dunn Loring",
+            description: "Always down to play som Dotes!!",
+            date: "most evenings",
+            time: "7 pm",
+            contact: "my steam id is GanksForDays",
+        },
+        {
+            image: "https://geekandsundry.com/wp-content/uploads/2016/06/Dungeon-Master.jpg",
+            title: "DungeonMaster looking for group",
+            address: "Ballston",
+            description: "I specialize in D&D 5e",
+            date: "friday nights",
+            time: "",
+            contact: "send an email to africanswallow@velocity.com",
+        },
+        {
+            image: "https://www.gannett-cdn.com/-mm-/c459130398d688c45d5a0b807fa91963a5bc217d/c=61-0-2982-2196/local/-/media/2018/03/27/TreasureCoast/TreasureCoast/636577844298006629-032718FLAGcentennialVSouthFork02.JPG?width=680&height=510&fit=crop",
+            title: "Flag Football Running Back",
+            address: "Chantilly",
+            description: "I LOVE flag football!  If you want an all-star female running back on your team, call me up!",
+            date: "Any. Time.",
+            time: "I mean any",
+            contact: "text 703-586-3836",
+        },
+        {
+            image: "https://1basil1.files.wordpress.com/2013/05/doin-it-in-the-park-old-school-slam-jam.jpg",
+            title: "Hoops in Arlington",
+            address: "1234 Clarendon Dr",
+            description: "We like to play regularly at this spot, feel free to join us!",
+            date: "9/21",
+            time: "5 pm",
+            contact: "Tweet me @dunkmasterJ",
+        }
+        ,
+        {
+            image: "https://images.penguinrandomhouse.com/cover/9781506703480",
+            title: "DotA in Merrifield",
+            address: "5678 Dunn Loring",
+            description: "Always down to play som Dotes!!",
+            date: "most evenings",
+            time: "7 pm",
+            contact: "my steam id is GanksForDays",
+        },
+        {
+            image: "https://geekandsundry.com/wp-content/uploads/2016/06/Dungeon-Master.jpg",
+            title: "DungeonMaster looking for group",
+            address: "Ballston",
+            description: "I specialize in D&D 5e",
+            date: "friday nights",
+            time: "",
+            contact: "send an email to africanswallow@velocity.com",
+        },
+        {
+            image: "https://www.gannett-cdn.com/-mm-/c459130398d688c45d5a0b807fa91963a5bc217d/c=61-0-2982-2196/local/-/media/2018/03/27/TreasureCoast/TreasureCoast/636577844298006629-032718FLAGcentennialVSouthFork02.JPG?width=680&height=510&fit=crop",
+            title: "Flag Football Running Back",
+            address: "Chantilly",
+            description: "I LOVE flag football!  If you want an all-star female running back on your team, call me up!",
+            date: "Any. Time.",
+            time: "I mean any",
+            contact: "text 703-586-3836",
+        }
+    ]
+
+    // ==================================================
+
+
+    var cards = $("#results");
+
+
+    for (var i = 0; i < testData.length; i++) {
+        cards.append(createCard(testData[i]));
+    }
+
+    function createCard(card) {
+   
+        var cardContent = `
+        <div class="col m4">
+            <div class="card medium">
+                <div class="card-image">
+                    <img src="${card.image}">
+                    <span class="card-title">${card.title}</span>
+                </div>
+                <div class="card-content">
+                  <p>${card.address}</p>
+                  <p>${card.description}</p>
+                  <p>${card.date}</p>
+                  <p>${card.time}</p>
+                  <p>${card.contact}</p>
+                </div>
+            </div>
+        </div>
+        `
+        console.log(cardContent);
+
+        // return newCard.append(cardContent);
+        return cardContent;
+    }
+
+</script>
+
+</html>
