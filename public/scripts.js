@@ -74,31 +74,6 @@ $(document).ready(function () {
     // date and time
     // submit button X
 
-    function createCard() {
-
-        var cardContent = `
-            <div class="col m4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img src="http://liherald.com/uploads/original/1433962027_7dd2.jpg">
-                        <span class="card-title">${resultTitle}</span>
-                    </div>
-                    <div class="card-content">
-                        <p>${resultAdd} ${resultZip}</p>
-                        <p>${resultDesc}</p>
-                        <p>${resultDate}</p>
-                        <p>${resultTime}</p>
-                        <p>${resultContact}</p>
-                        <p>${resultDistance}</p>
-                    </div>
-                </div>
-            </div>
-            `;
-
-        // return newCard.append(cardContent);
-        return cardContent;
-    }
-
     var submit = $("#submitCreateDiv");
 
     submit.on("click", function (event) {
@@ -174,24 +149,6 @@ $(document).ready(function () {
                         }
                     }
 
-
-
-                    distanceObject = {
-                        firstZip: zipCode,
-                        secondZip: resultZip
-                    };
-
-
-                    // $.get("/api/distance", function (res) {
-                    //     console.log(res);
-                    //     // resultDistance = distanceData;
-                    // });
-
-                    // $.post("/api/distance", distanceObject, function (res) {
-                    //     resultDistance = res;
-                    //     console.log("the distance from user is " + resultDistance);
-                    // });
-
                     //GOOGLE DISTANCE MATRIX HERE
 
                     resultAdd = result[i][j].address;
@@ -215,9 +172,30 @@ $(document).ready(function () {
                     var cards = $("#results");
                     cards.append(createCard());
 
+                    function createCard() {
 
-
-
+                        var cardContent = `
+                            <div class="col m4">
+                                <div class="card medium">
+                                    <div class="card-image">
+                                        <img src="http://liherald.com/uploads/original/1433962027_7dd2.jpg">
+                                        <span class="card-title">${resultTitle}</span>
+                                    </div>
+                                    <div class="card-content">
+                                        <p>${resultAdd} ${resultZip}</p>
+                                        <p>${resultDesc}</p>
+                                        <p>${resultDate}</p>
+                                        <p>${resultTime}</p>
+                                        <p>${resultContact}</p>
+                                        <p>${resultDistance}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            `;
+                
+                        // return newCard.append(cardContent);
+                        return cardContent;
+                    }
 
                     //================================
                 }
