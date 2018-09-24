@@ -33,8 +33,8 @@ background-color: #872020;
 display: block;
 }
 
-.btn:hover {
-background-color: #265709;
+.btn:hover, .btn:focus, .btn:active {
+background-color: #3551ba;
 }
 
 .btn-large {
@@ -42,8 +42,8 @@ background-color: #872020;
 display: block;
 }
 
-.btn-large:hover {
-background-color: #265709;
+.btn-large:hover, .btn:focus, .btn:active {
+background-color: #3551ba;
 }
 
 .input-field {
