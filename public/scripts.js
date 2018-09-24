@@ -253,7 +253,7 @@ $(document).ready(function () {
                 results.push(snap.val());
             });
         }
-        setTimeout(function() {
+        setTimeout(function () {
             for (var i in results[0]) {
                 if (parseInt(i) > upZip || parseInt(i) < botZip) {
                     delete results[0][i];
@@ -262,6 +262,14 @@ $(document).ready(function () {
             }
             result = results[0];
             console.log(result);
+            var resultAdd;
+            for (var i in result) {
+                for (var j in result[i]) {
+                    resultAdd = result[i][j].address;
+                    console.log(resultAdd);
+                }
+            }
         }, 1000);
+
     });
 }); //end document.ready
