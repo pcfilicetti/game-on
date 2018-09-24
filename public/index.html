@@ -61,10 +61,8 @@
                                     <div class="row center-align" id="rowCenterZip">
                                         <!-- <strong>Enter your city and state:</strong> -->
                                         <div class="input-field">
-                                            <input id="findCity" type="text" class="validate center-align">
-                                            <span class="helper-text" data-error="wrong" data-success="right">City</span>
-                                            <input id="findState" type="text" class="validate center-align">
-                                            <span class="helper-text" data-error="wrong" data-success="right">State</span>
+                                            <input id="zipCode" type="text" class="validate center-align">
+                                            <span class="helper-text" data-error="wrong" data-success="right">Zip Code</span>
                                         </div>
                                     </div>
                                 </form>
@@ -81,11 +79,6 @@
                                 <div class="container">
                                     <button class="btn fade-in center-align" id="sportsBtn">Sports</button>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row" id="submitFindDiv">
-                            <div class="col m12">
-                                <button class="btn fade-in center-align" id="submitBtnFind">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -201,7 +194,7 @@
             authDomain: "game-on-33a97.firebaseapp.com",
             databaseURL: "https://game-on-33a97.firebaseio.com",
             projectId: "game-on-33a97",
-     ç       storageBucket: "game-on-33a97.appspot.com",
+            storageBucket: "game-on-33a97.appspot.com",
             messagingSenderId: "62946106120"
         };
         firebase.initializeApp(config);
