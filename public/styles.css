@@ -151,17 +151,17 @@ body{
 	background: #000;
 	font-weight: 400;
 	font-size: 15px;
-	color: #aa3e03;
+	/* color: #aa3e03; */
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
 .ie7 body{
 	overflow:hidden;
 }
-a{
+/* a{
 	color: #333;
 	text-decoration: none;
-}
+} */
 .container{
 	position: relative;
 	text-align: center;
@@ -204,11 +204,11 @@ a{
     opacity: 0;
     z-index: 0;
 	-webkit-backface-visibility: hidden;
-    -webkit-animation: imageAnimation 24s linear infinite 0s;
-    -moz-animation: imageAnimation 24s linear infinite 0s;
-    -o-animation: imageAnimation 24s linear infinite 0s;
-    -ms-animation: imageAnimation 24s linear infinite 0s;
-    animation: imageAnimation 24s linear infinite 0s;
+    -webkit-animation: imageAnimation 20s linear infinite 0s;
+    -moz-animation: imageAnimation 20s linear infinite 0s;
+    -o-animation: imageAnimation 20s linear infinite 0s;
+    -ms-animation: imageAnimation 20s linear infinite 0s;
+    animation: imageAnimation 20s linear infinite 0s;
 }
 
 .slideshow li:nth-child(1) span { background-image: url("./videogames1.jpg") }
@@ -237,57 +237,7 @@ a{
     -ms-animation-delay: 12s;
     animation-delay: 12s;
 }
-/* .slideshow li:nth-child(5) span {
-    background-image: url(https://24.media.tumblr.com/b94dbb2a392198d5cc39c19959598229/tumblr_n0hpthN8VH1st5lhmo1_1280.jpg);
-    -webkit-animation-delay: 24s;
-    -moz-animation-delay: 24s;
-    -o-animation-delay: 24s;
-    -ms-animation-delay: 24s;
-    animation-delay: 24s;
-}
-.slideshow li:nth-child(6) span {
-    background-image: url(https://31.media.tumblr.com/67d222ee577fc35faca83f0e08efc48e/tumblr_mzzqt7wyEU1st5lhmo1_1280.jpg);
-    -webkit-animation-delay: 30s;
-    -moz-animation-delay: 30s;
-    -o-animation-delay: 30s;
-    -ms-animation-delay: 30s;
-    animation-delay: 30s;
-}
-.slideshow li:nth-child(2) div {
-    -webkit-animation-delay: 6s;
-    -moz-animation-delay: 6s;
-    -o-animation-delay: 6s;
-    -ms-animation-delay: 6s;
-    animation-delay: 6s;
-}
-.slideshow li:nth-child(3) div {
-    -webkit-animation-delay: 12s;
-    -moz-animation-delay: 12s;
-    -o-animation-delay: 12s;
-    -ms-animation-delay: 12s;
-    animation-delay: 12s;
-}
-.slideshow li:nth-child(4) div {
-    -webkit-animation-delay: 18s;
-    -moz-animation-delay: 18s;
-    -o-animation-delay: 18s;
-    -ms-animation-delay: 18s;
-    animation-delay: 18s; */
-/* } */
-/* .slideshow li:nth-child(5) div {
-    -webkit-animation-delay: 24s;
-    -moz-animation-delay: 24s;
-    -o-animation-delay: 24s;
-    -ms-animation-delay: 24s;
-    animation-delay: 24s;
-} */
-/* .slideshow li:nth-child(6) div {
-    -webkit-animation-delay: 30s;
-    -moz-animation-delay: 30s;
-    -o-animation-delay: 30s;
-    -ms-animation-delay: 30s;
-    animation-delay: 30s;
-} */
+
 /* Animation for the slideshow images */
 @-webkit-keyframes imageAnimation { 
 	0% {
