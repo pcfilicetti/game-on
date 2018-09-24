@@ -46,7 +46,6 @@ function darkSky(lat, lng) {
             var weeklyWeather = darkData.daily.data
             for (var i = 0; i < weeklyWeather.length; i++) {
                 console.log(weeklyWeather[i].summary);
-
             }
         })
         .catch((err) => {
