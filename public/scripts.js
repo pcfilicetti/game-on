@@ -164,13 +164,15 @@ $(document).ready(function () {
                         "method": "GET"
                     }).then(function (data) {
                         console.log(data);
+                        console.log(data.rows[0].elements[0].distance.text);
+                        resultDistance = data.rows[0].elements[0].distance.text;
+                        cards.append(createCard());
                     });
 
 
                     //================================
 
                     var cards = $("#results");
-                    cards.append(createCard());
 
                     function createCard() {
 
