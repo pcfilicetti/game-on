@@ -120,6 +120,7 @@ $(document).ready(function () {
         var zipCode = $("#zipCode").val();
         var upZip = '' + parseInt(parseInt(zipCode) + 30);
         var botZip = '' + parseInt(parseInt(zipCode) - 30);
+        results = [];
         if (num == 0) {
             firebase.database().ref('events/sports').on('value', function (snap) {
                 results.push(snap.val());
