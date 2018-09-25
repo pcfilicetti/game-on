@@ -246,7 +246,7 @@ $(document).ready(function () {
 
                         var cardContent = `
                             <div class="cardy col m4">
-                                <div class="card medium">
+                                <div class="card large">
                                     <div class="card-image">
                                         <div class="postergrad">
                                         <img class="poster" src="${resultImage}">
