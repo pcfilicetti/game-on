@@ -92,13 +92,23 @@ $(document).ready(function () {
             return false;
         }
 
+        if ($("#gameRadio").prop('checked') && $("#image").val() == "") {
+            var image = "https://i.amz.mshcdn.com/VN4DYfj6y_-7pAft3TwiTbipdFg=/950x534/filters:quality(90)/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F664750%2F8fcbb4ea-e47d-453b-9eda-46d8c333ae80.jpg";
+        }
+        else if ($("#sportRadio").prop('checked') && $("#image").val() == "") {
+            var image = "https://www.michaelgleibermd.com/news/wp-content/uploads/2015/01/year-round-sports.jpg";
+        } else {
+            var image = $("#image").val();
+        }
+
         if ($("#sportRadio").prop('checked')) {
             firebase.database().ref('events/sports/' + zip + '/' + title).set({
                 address: address,
                 contactInfo: contact,
                 description: desc,
                 dateTime: date,
-                zip: zip
+                zip: zip,
+                image: image
             });
             window.alert("Event submitted!");
         } else if ($("#gameRadio").prop("checked")) {
@@ -107,7 +117,8 @@ $(document).ready(function () {
                 contactInfo: contact,
                 description: desc,
                 dateTime: date,
-                zip: zip
+                zip: zip,
+                image: image
             });
             window.alert("Event submitted!");
         }
@@ -136,6 +147,9 @@ $(document).ready(function () {
                 }
             }
             result = results[0];
+
+            console.log(result);
+
             var resultAdd, resultTitle, resultContact, resultDateTime, resultDate, resultTime, resultDesc;
             var today = new Date();
             for (var i in result) {
@@ -149,6 +163,8 @@ $(document).ready(function () {
                         }
                     }
 
+                    console.log(result[i][j]);
+
                     //GOOGLE DISTANCE MATRIX HERE
 
                     resultAdd = result[i][j].address;
@@ -158,16 +174,18 @@ $(document).ready(function () {
                     resultTime = dateFormat(resultDateTime, "h:MM TT");
                     resultDesc = result[i][j].description;
                     resultZip = i;
+                    resultImage = result[i][j].image
 
                     $.ajax({
-                        "url": "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zipCode + "&destinations=" + resultAdd + "&key=AIzaSyBZsXrosKvRGdreWJo2EPOxhvxor5LBaBQ",
+                        "url": "https://calm-thicket-12645.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zipCode + "&destinations=" + resultAdd + "&key=AIzaSyBZsXrosKvRGdreWJo2EPOxhvxor5LBaBQ",
                         "method": "GET"
                     }).then(function (data) {
-                        console.log(data);
-                        console.log(data.rows[0].elements[0].distance.text);
+                        // console.log(data);
+                        // console.log(data.rows[0].elements[0].distance.text);
                         resultDistance = data.rows[0].elements[0].distance.text;
                         cards.append(createCard());
                     });
+
 
 
                     //================================
@@ -180,21 +198,24 @@ $(document).ready(function () {
                             <div class="col m4">
                                 <div class="card medium">
                                     <div class="card-image">
-                                        <img src="http://liherald.com/uploads/original/1433962027_7dd2.jpg">
-                                        <span class="card-title">${resultTitle}</span>
+                                        <div class="postergrad">
+                                        <img class="poster" src="${resultImage}">
+                                        </div>
+                                        <span class="card-title"><b>${resultTitle}</b></span>
                                     </div>
                                     <div class="card-content">
-                                        <p>${resultAdd} ${resultZip}</p>
-                                        <p>${resultDesc}</p>
-                                        <p>${resultDate}</p>
-                                        <p>${resultTime}</p>
-                                        <p>${resultContact}</p>
-                                        <p>${resultDistance}</p>
+                                        <p><b>Address: </b>${resultAdd}</p>
+                                        <p><b>Zip: </b>${resultZip}</p>
+                                        <p><b>Description: </b>${resultDesc}</p>
+                                        <p><b>Date: </b>${resultDate}</p>
+                                        <p><b>Time: </b>${resultTime}</p>
+                                        <p><b>Contact: </b>${resultContact}</p>
+                                        <p><b>Distance: </b>${resultDistance}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div>  
                             `;
-                
+
                         // return newCard.append(cardContent);
                         return cardContent;
                     }
@@ -208,9 +229,11 @@ $(document).ready(function () {
     var results = [];
     var result;
     $("#sportsBtn").on("click", function () {
+        $('#results').empty();
         queryFirebase(0);
     });
     $("#gamingBtn").on("click", function () {
+        $('#results').empty();
         queryFirebase(1);
     });
 
