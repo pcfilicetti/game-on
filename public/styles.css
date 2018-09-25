@@ -807,3 +807,7 @@ body{
 	}
 	100% { opacity: 0 }
 }
+
+#mapid {
+	height: 400px;
+}
