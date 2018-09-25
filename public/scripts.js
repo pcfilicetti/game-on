@@ -120,6 +120,12 @@ $(document).ready(function () {
                 image: image
             });
             window.alert("Event submitted!");
+            $("#title").val('');
+            $("#address").val('');
+            $("#zip").val('');
+            $("#email").val('');
+            $("#description").val('');
+            $("#datepicker").val('');
         }
     });
 
