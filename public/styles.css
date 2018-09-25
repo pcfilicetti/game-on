@@ -571,6 +571,11 @@ body{
   .card.medium .card-action {
 	position: relative;
   }
+
+  .cardy {
+    opacity: 0.9;
+  }
+
 /* end of css for result cards */
 
 

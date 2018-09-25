@@ -196,7 +196,7 @@ $(document).ready(function () {
                     function createCard() {
 
                         var cardContent = `
-                            <div class="col m4">
+                            <div class="cardy col m4">
                                 <div class="card medium">
                                     <div class="card-image">
                                         <div class="postergrad">
